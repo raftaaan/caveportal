@@ -17,6 +17,7 @@ class view extends config{
                 }
         }
 
+
         public function getdpSRA(){
             $user = new user();
             return $user->data()->dp;
@@ -27,4 +28,17 @@ class view extends config{
              return $user->data()->mm;
         }
 
+        
+        public function courses(){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `courses`";
+            $data = $con->prepare($sql);
+            $data ->execute();
+            $rows =$data->fetchAll(PDO::FETCH_OBJ);
+                foreach ($rows as $row) {
+                  echo '<option data-tokens=".'.$row->course_title.'." value="'.$row->course_title.'">'.$row->course_title.'</option>';
+                  echo 'success';
+                }
+        }
 }

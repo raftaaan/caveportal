@@ -48,7 +48,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init
                                     <label for="floatingInput">Username</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingPassword" name="password" passplaceholder="Password">
+                                    <input type="password" class="form-control" id="floatingPassword" name="password" pass  placeholder="Password">
                                     <label for="floatingPassword">Password</label>
                                 </div>
                                 <div class="mt-2 text-end">

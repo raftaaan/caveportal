@@ -22,6 +22,7 @@ class insert extends config{
         $sql="INSERT INTO `tbl_client_user`(`firstName`, `middleName`, `lastName`, `studentID`, `degree`,`diploma`) VALUES ('$this->firstName','$this->middleName','$this->lastName','$this->studentID','$this->degree','$this->diploma')";
         $data = $con->prepare($sql);
         $data->execute();
+        
     }
 
    
