@@ -22,7 +22,6 @@ $view = new view;
 
 </head>
 <body class="d-flex flex-column h-100 bg-light" >
-  <header>
     <main class="flex-shrink-0">
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-aos="fade-down" data-aos-duration="1500">
@@ -46,32 +45,31 @@ $view = new view;
         <div class="container mt-3 slide-in-left rounded shadow-sm" data-aos="fade-down"  data-aos-duration="1500">
           <?php 
           if(!empty($_POST)){
-            $insert = new insert($_POST['firstName'],$_POST['middleName'],$_POST['lastName'],$_POST['degree'], $_FILES['diploma'], $_FILES['consent']);
+            $insert = new insert($_POST['studentID'],$_POST['firstName'],$_POST['middleName'],$_POST['lastName'],$_POST['degree']);
             $insert->insertVerification();
             }
             ?>
-            
             <form action="" method="POST" class="rounded bg-white shadow py-5 px-4">
               <div class="row">
                 <div class=" form-group col-md-12">
                     <h3 class="text-center mb-4 title-header" >New Application for Candidate Verification</h3>
                 </div>
               </div>
-              <!-- <div class="row border-top pt-2">
+              <div class="row border-top pt-2">
                 <div class="form-floating col-md-4">
                 <i class="fa-solid fa-user icon"></i>
                   <input type="text" class="form-control form-control-sm" id="floatingInput"  value="" name="studentID" placeholder="Student Number " autocomplete="no"  minlength="10" maxlength="10">
                   <label for="floatingInput">Student Number</label>
                   <small class="text-muted"> *Please input the correct student format <b><em>2018-00053</em></b></small>
                 </div>
-              </div> -->
+              </div>
               <div class="row border-top py-2">
                 <div class="form-group col-md-12">
                   <h5 class="text-start mt-2 mb-3">Basic Information <br /><small class="text-muted">for student with ñ in their name please input Uppercase Ñ or N instead.</small></h5>
                 </div>
                 <div class="form-floating col-md-4">
                   <i class="fa-solid fa-user icon"></i>
-                  <input type="text" class="form-control form-control-sm" id="floatingInput"  value="" name="firstName" placeholder="First Name" autocomplete="no" pattern="[a-zA-Z\s]*$" required>
+                  <input type="text" class="form-control form-control-sm" id="floatingInput" value="" name="firstName" placeholder="First Name" autocomplete="no" pattern="[a-zA-Z\s]*$" required>
                   <label for="floatingInput">First Name</label>
                 </div>
 
@@ -90,18 +88,24 @@ $view = new view;
               </div>
               
               <div class="row border-top py-2">
-                <div class="form-group col-md-8">
-                  <label for="courses" >College/s to handle</label>
-                  <select id="courses" name="degree" class="selectpicker form-select" data-live-search="true"required>
+                <div class="form-group col-md-6">
+                  <label for="degree">Course/s</label>
+                  <select id="degree" name="degree" class="selectpicker form-select" data-live-search="true" required>
                     <option selected>---- Select Course ----</option>
                     <option value=""><?php $view->courses();?></option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="yearsGrad" >Year Graduated</label>
+                  <select name="yearsGrad" id="yearsGrad" class="selectpicker form-select" data-live-search="true">
+                    <option value="">--- Select Year ---</option>
                   </select>
                 </div>
               </div>
 
               <div class="row border-top py-2 justify-content-center">
                 <div class="form-group col-md-6">
-                  <h5 class="text-start mt-2 mb-3" for="studentN">Upload Diploma <br /><span class="diploma-title">(Please provide diploma to as proof of authenticity.)</span></h5>
+                  <h5 class="text-start mt-2 mb-3" for="diploma">Upload Diploma <br /><span class="diploma-title">(Please provide diploma to as proof of authenticity.)</span></h5>
                   <input id="diploma" accept=".pdf" type="file" name="diploma" onchange="validateSize(this)">
                   <small class="text-muted"> <br />
                     *Please ensure the correctness of the pdf file. Incorrect requirements uploaded may <b>result to forfeiting of your application.</b></em></b></small>
@@ -110,7 +114,7 @@ $view = new view;
                 </div>
                 
                 <div class="form-group col-md-6">
-                  <h5 class="text-start mt-2 mb-3" for="studentN">Consent Form <br /><span class="diploma-title">(Please provide a consent form from the candidate.)</span></h5>
+                  <h5 class="text-start mt-2 mb-3" for="consent">Consent Form <br /><span class="diploma-title">(Please provide a consent form from the candidate.)</span></h5>
                   <input id="consent" accept=".pdf" type="file" name="consent" onchange="validateSize(this)">
                   <p>
                     <small class="text-muted" style="font-size: 60%;"><b>In accordance to Republic Act 10173 – Data Privacy Act of 2012</b><br />-By submitting this form, I am giving my consent to CEU to process my personal and sensitive information.
@@ -122,7 +126,7 @@ $view = new view;
 
               <div class="row border-top py-2 justify-content-center">
                 <div class="form-group col-md-6">
-                  <input type="hidden" name="Token" value="<?php echo Token::generate();?>" />
+                  <input type="hidden" name="Token" value="<?php echo Token::generate();?>"/>
                   <button type="submit" id="myButton1" class="submit_btn mt-2" >
                   Submit the Candidate Verification Application Form
                   </button>
@@ -133,12 +137,12 @@ $view = new view;
         </section>
       
     </main>
-  </header>
 <!-- Modal --> 
     <script src="vendor/js/jquery.js"></script>
     <script src="vendor/js/popper.js"></script>
     <script src="vendor/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="resource/js/year.js"></script>
     <!-- <script src="resource/js/ft.js"></script> -->
     <script>
       $(document).ready(function(){
