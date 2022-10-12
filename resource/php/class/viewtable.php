@@ -136,6 +136,9 @@ public function viewApprovedData(){
           <th>Diploma</th>
           <th>Date Completed</th>
           <th>Status</th>
+          <th>Remarks</th>
+          <th>Admin Actions</th>
+
           </tr>
   </thead><tbody>";
   foreach ($result as $data) {
@@ -151,7 +154,16 @@ public function viewApprovedData(){
       echo "<td>$data[diploma]</td>";
       echo "<td>$data[date_completed]</td>";
       echo "<td>$data[status]</td>";
+      echo "<td>      </td>";
+
+
+      echo "<td>
+      <a class=' btn btn-danger btn-sm' href='index.php?delete=$data[id]'>Delete </a>
+
+      </td>";
       echo "</tr>";
+
+
   }
   echo "</tbody></table>";
 }
@@ -175,6 +187,7 @@ public function viewOnHoldData(){
           <th>Consent Form</th>
           <th>Diploma</th>
           <th>Status</th>
+          <th>Remarks</th>
           <th>Admin Actions</th>
 
           </tr>
@@ -191,9 +204,12 @@ public function viewOnHoldData(){
       echo "<td>$data[consentForm]</td>";
       echo "<td>$data[diploma]</td>";
       echo "<td>$data[status]</td>";
+      echo "<td>      </td>";
       echo "<td>
-      <a class='btn btn-primary btn-sm' href='index.php?approvedstatus=$data[id]'>Mark as APPROVED</a>
-      <a class='btn btn-danger btn-sm'>Mark as DENIED</a>
+      <a class='btn btn-primary btn-sm' href='index.php?approvedstatus=$data[id]'>Mark as APPROVED</a> <br>
+      <a class='btn btn-danger btn-sm'>Mark as DENIED</a><br>
+      <a class=' btn btn-danger btn-sm' href='admindash.php?delete=$data[id]'>Delete </a>
+
       </td>";
       echo "</tr>";
   }
@@ -219,6 +235,7 @@ public function viewPendingData(){
           <th>Consent Form</th>
           <th>Diploma</th>
           <th>Status</th>
+          <th>Remarks</th>
           <th>Admin Actions</th>
 
           </tr>
@@ -235,13 +252,69 @@ public function viewPendingData(){
       echo "<td>$data[consentForm]</td>";
       echo "<td>$data[diploma]</td>";
       echo "<td>$data[status]</td>";
+      echo "<td>      </td>";
       echo "<td>   
-      <a class='btn btn-primary btn-sm' href='index.php?approvedstatus=$data[id]'>Mark as APPROVED</a>
-      <a class='btn btn-warning btn-sm'>Mark as ON-HOLD</a>
-      <a class='btn btn-danger btn-sm'>Mark as DENIED</a>
+      <a class='btn btn-primary btn-sm' href='index.php?approvedstatus=$data[id]'>Mark as APPROVED</a><br>
+      <a class='btn btn-warning btn-sm'>Mark as ON-HOLD</a><br>
+      <a class='btn btn-danger btn-sm'>Mark as DENIED</a><br>
+      <a class=' btn btn-danger btn-sm' href='admindash.php?delete=$data[id]'>Delete </a>
+
       </td>";
       echo "</tr>";
   }
   echo "</tbody></table>";
 }
+public function viewDeniedData(){
+  $con = $this->con();
+  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'DENIED'";
+  $data = $con->prepare($sql);
+  $data->execute();
+  $result = $data->fetchAll(PDO::FETCH_ASSOC);
+  echo "<h3 class='mb-4 mt-5'>DENIED APPLICATIONS</h3>";
+  echo "<table class='table table-dark table-stripe table-sm'>";
+  echo "<thead>
+          <tr>
+          <th>Student ID</th>
+          <th>Agent ID</th>
+          <th>First Name</th>
+          <th>Middle Name</th>
+          <th>Last Name</th>
+          <th>Degree</th>
+          <th>Date Added</th>
+          <th>Consent Form</th>
+          <th>Diploma</th>
+          <th>Date Completed</th>
+          <th>Status</th>
+          <th>Remarks</th>
+          <th>Admin Actions</th>
+
+          </tr>
+  </thead><tbody>";
+  foreach ($result as $data) {
+      echo "<tr>";
+      echo "<td>$data[studentID]</td>";
+      echo "<td>$data[agentID]</td>";
+      echo "<td>$data[firstName]</td>";
+      echo "<td>$data[middleName]</td>";
+      echo "<td>$data[lastName]</td>";
+      echo "<td>$data[degree]</td>";
+      echo "<td>$data[date_added]</td>";
+      echo "<td>$data[consentForm]</td>";
+      echo "<td>$data[diploma]</td>";
+      echo "<td>$data[date_completed]</td>";
+      echo "<td>$data[status]</td>";
+      echo "<td>      </td>";
+
+
+      echo "<td>
+      <a class=' btn btn-danger btn-sm' href='index.php?delete=$data[id]'>Delete </a>
+
+      </td>";
+      echo "</tr>";
+
+
+  }
+  echo "</tbody></table>";
+}
+
 }
