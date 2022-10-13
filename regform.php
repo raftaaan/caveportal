@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init.php';
+isLogin();
 $view = new view;
 ?>
 
@@ -42,45 +43,29 @@ $view = new view;
       </nav>
     
       <section class="wrapper">
-        <div class="container mt-3 slide-in-left rounded shadow-sm" data-aos="fade-down"  data-aos-duration="1500">
-          <?php 
-          if(!empty($_POST)){
-            $insert = new insert($_POST['studentID'],$_POST['firstName'],$_POST['middleName'],$_POST['lastName'],$_POST['degree']);
-            $insert->insertVerification();
-            }
-            ?>
-            <form action="" method="POST" class="rounded bg-white shadow py-5 px-4">
+        <div class="container mt-2 slide-in-left rounded shadow-sm" data-aos="fade-down"  data-aos-duration="1500">
+          
+            <form action="" method="POST" class="rounded bg-white shadow py-4 px-4">
               <div class="row">
                 <div class=" form-group col-md-12">
                     <h3 class="text-center mb-4 title-header" >New Application for Candidate Verification</h3>
-                </div>
-              </div>
-              <div class="row border-top pt-2">
-                <div class="form-floating col-md-4">
-                <i class="fa-solid fa-user icon"></i>
-                  <input type="text" class="form-control form-control-sm" id="floatingInput"  value="" name="studentID" placeholder="Student Number " autocomplete="no"  minlength="10" maxlength="10">
-                  <label for="floatingInput">Student Number</label>
-                  <small class="text-muted"> *Please input the correct student format <b><em>2018-00053</em></b></small>
                 </div>
               </div>
               <div class="row border-top py-2">
                 <div class="form-group col-md-12">
                   <h5 class="text-start mt-2 mb-3">Basic Information <br /><small class="text-muted">for student with ñ in their name please input Uppercase Ñ or N instead.</small></h5>
                 </div>
-                <div class="form-floating col-md-4">
-                  <i class="fa-solid fa-user icon"></i>
+                <div class="form-floating col-md-4 mb-2">
                   <input type="text" class="form-control form-control-sm" id="floatingInput" value="" name="firstName" placeholder="First Name" autocomplete="no" pattern="[a-zA-Z\s]*$" required>
                   <label for="floatingInput">First Name</label>
                 </div>
 
-                <div class="form-floating col-md-4">
-                  <i class="fa-solid fa-user icon"></i>
+                <div class="form-floating col-md-4 mb-2">
                   <input type="text" class="form-control form-control-sm" id="floatingInput"  value="" name="middleName" placeholder="Middle Name" autocomplete="no" pattern="[a-zA-Z\s]*$" required>
                   <label for="floatingInput">Middle Name</label>
                 </div>
                 
                 <div class="form-floating col-md-4">
-                  <i class="fa-solid fa-user icon"></i>
                     <input type="text" class="form-control form-control-sm" id="floatingInput"  value="" name="lastName" placeholder="Last Name"  autocomplete="no" pattern="[a-zA-Z\s]*$" required>
                     <label for="floatingInput">Last Name</label>
                     <small class="text-muted"></b> </small>
@@ -103,10 +88,10 @@ $view = new view;
                 </div>
               </div>
 
-              <div class="row border-top py-2 justify-content-center">
+              <div class="row border-top py-2">
                 <div class="form-group col-md-6">
                   <h5 class="text-start mt-2 mb-3" for="diploma">Upload Diploma <br /><span class="diploma-title">(Please provide diploma to as proof of authenticity.)</span></h5>
-                  <input id="diploma" accept=".pdf" type="file" name="diploma" onchange="validateSize(this)">
+                  <input id="diploma" class="form-control" accept=".pdf" type="file" name="diploma" onchange="validateSize(this)" >
                   <small class="text-muted"> <br />
                     *Please ensure the correctness of the pdf file. Incorrect requirements uploaded may <b>result to forfeiting of your application.</b></em></b></small>
                   <small class="text-muted"> <br />
@@ -115,7 +100,7 @@ $view = new view;
                 
                 <div class="form-group col-md-6">
                   <h5 class="text-start mt-2 mb-3" for="consent">Consent Form <br /><span class="diploma-title">(Please provide a consent form from the candidate.)</span></h5>
-                  <input id="consent" accept=".pdf" type="file" name="consent" onchange="validateSize(this)">
+                  <input id="consent" class="form-control" accept=".pdf" type="file" name="consent" onchange="validateSize(this)">
                   <p>
                     <small class="text-muted" style="font-size: 60%;"><b>In accordance to Republic Act 10173 – Data Privacy Act of 2012</b><br />-By submitting this form, I am giving my consent to CEU to process my personal and sensitive information.
                     <br /> -By submitting this form, I also signify that I have read, understood and hereby state that everything stated above are true and correct.
@@ -124,17 +109,32 @@ $view = new view;
                 </div>
               </div>
 
-              <div class="row border-top py-2 justify-content-center">
-                <div class="form-group col-md-6">
+              <div class="row border-top py-3 justify-content-end">
+                <div class="form-group col-md-8">
                   <input type="hidden" name="Token" value="<?php echo Token::generate();?>"/>
-                  <button type="submit" id="myButton1" class="submit_btn mt-2" >
-                  Submit the Candidate Verification Application Form
+                  <button type="submit" id="myButton1" class="submit_btn btn-mdmt-2">
+                  Submit Application
                   </button>
                 </div>
               </div>
             </form>
           </div>
         </section>
+          <!-- Footer-->
+          <footer class="bg-dark py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 text-white">Centro Escolar University     ||     Mariano | Gita | Tuazon | Valencia</div></div>
+                    <div class="col-auto">
+                        <a class="link-light small" href="#!">Privacy</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
       
     </main>
 <!-- Modal --> 
