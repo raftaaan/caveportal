@@ -285,5 +285,53 @@ function isClient($user) {
     }
 }
 
+function deleteT(){
+    if(!empty($_GET['delete'])){
+        $delete = new delete($_GET['delete']);
+        if($delete->deleteClient()){
+    }
+    else {
+    }
+    }
+}
 
+function approvedClient(){
+    if(!empty($_GET['approvedstatus'])){
+        $edit = new edit($_GET['approvedstatus']);
+        if($edit->editApproved()){
+      
+    }
+    else {
+ 
+    }
+    }
+}
+function onholdClient(){
+    if(!empty($_GET['onholdstatus'])){
+        $edit = new edit($_GET['onholdstatus']);
+        if($edit->editOnhold()){
+    }
+    else {
+    }
+    }
+}
+function deniedClient(){
+    if(!empty($_GET['deniedstatus'])){
+        $edit = new edit($_GET['deniedstatus']);
+        if($edit->editDenied()){
+    }
+    else {
+    }
+    }
+}
+
+function deleteClient(){
+    if(!empty($_GET['delete'])){
+        $edit = new edit($_GET['delete']);
+        if($edit->deleteClient()){
+    }
+    else {
+    }
+    }
+}
  ?>
