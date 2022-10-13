@@ -306,7 +306,7 @@ public function viewDeniedData(){
 
 
       echo "<td>
-      <a class=' btn btn-danger btn-sm' href='adminfunctions.php?delete=$data[id]'>Delete </a>
+      <a class=' btn btn-primary btn-sm' href='adminfunctions.php?delete=$data[id]'>Delete </a>
 
       </td>";
       echo "</tr>";
