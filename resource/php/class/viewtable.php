@@ -1,7 +1,6 @@
 <?php
   require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init.php';
 // require_once 'config.php';
-// $approvedstatus = new approvedstatus();
 
 class viewtable extends config{
 
@@ -158,7 +157,7 @@ public function viewApprovedData(){
 
 
       echo "<td>
-      <a class=' btn btn-danger btn-sm' href='index.php?delete=$data[id]'>Delete </a>
+      <a class=' btn btn-primary btn-sm' href='adminfunctions.php?delete=$data[id]'>Delete </a>
 
       </td>";
       echo "</tr>";
@@ -206,9 +205,9 @@ public function viewOnHoldData(){
       echo "<td>$data[status]</td>";
       echo "<td>      </td>";
       echo "<td>
-      <a class='btn btn-primary btn-sm' href='index.php?approvedstatus=$data[id]'>Mark as APPROVED</a> <br>
-      <a class='btn btn-danger btn-sm'>Mark as DENIED</a><br>
-      <a class=' btn btn-danger btn-sm' href='admindash.php?delete=$data[id]'>Delete </a>
+      <a class='btn btn-success btn-sm' href='adminfunctions.php?approvedstatus=$data[id]'>Mark as APPROVED</a><br>
+      <a class='btn btn-danger btn-sm'href='adminfunctions.php?deniedstatus=$data[id]'>Mark as DENIED</a><br>
+      <a class=' btn btn-primary btn-sm' href='adminfunctions.php?delete=$data[id]'>Delete </a>
 
       </td>";
       echo "</tr>";
@@ -254,10 +253,10 @@ public function viewPendingData(){
       echo "<td>$data[status]</td>";
       echo "<td>      </td>";
       echo "<td>   
-      <a class='btn btn-primary btn-sm' href='index.php?approvedstatus=$data[id]'>Mark as APPROVED</a><br>
-      <a class='btn btn-warning btn-sm'>Mark as ON-HOLD</a><br>
-      <a class='btn btn-danger btn-sm'>Mark as DENIED</a><br>
-      <a class=' btn btn-danger btn-sm' href='admindash.php?delete=$data[id]'>Delete </a>
+      <a class='btn btn-success btn-sm' href='adminfunctions.php?approvedstatus=$data[id]'>Mark as APPROVED</a><br>
+      <a class='btn btn-warning btn-sm'href='adminfunctions.php?onholdstatus=$data[id]'>Mark as ON-HOLD</a><br>
+      <a class='btn btn-danger btn-sm'href='adminfunctions.php?deniedstatus=$data[id]'>Mark as DENIED</a><br>
+      <a class=' btn btn-primary btn-sm' href='adminfunctions.php?delete=$data[id]'>Delete </a>
 
       </td>";
       echo "</tr>";
@@ -307,7 +306,7 @@ public function viewDeniedData(){
 
 
       echo "<td>
-      <a class=' btn btn-danger btn-sm' href='index.php?delete=$data[id]'>Delete </a>
+      <a class=' btn btn-danger btn-sm' href='adminfunctions.php?delete=$data[id]'>Delete </a>
 
       </td>";
       echo "</tr>";
