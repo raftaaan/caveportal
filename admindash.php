@@ -21,9 +21,15 @@ $viewtable = new viewtable();
         <link href="resource/css/clientdash.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css"  href="vendor/css/bootstrap.min.css">
         <link href="vendor/css/all.css" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;500&display=swap" rel="stylesheet">
+        <script src="vendor/js/jquery.js"></script>
+        <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
 
 </head>
 <body class="d-flex flex-column h-100">
@@ -53,16 +59,21 @@ $viewtable = new viewtable();
 </div>
 
         <div class="container mt-4 puff-in-center">
-          <?php $viewtable->viewPendingData(); ?>
+          <?php $viewtable->viewPendingData();?>
         </div>
         <br>
         <div class="container mt-4 puff-in-center">
-          <?php $viewtable->viewOnHoldData(); ?>
+          <?php $viewtable->viewOnHoldData();?>
         </div>
         <br>
         <div class="container mt-4 puff-in-center">
-          <?php $viewtable->viewApprovedData(); ?>
-        </div>
+          <?php $viewtable->viewApprovedData();?>
+        </div>  
+        <br>
+        <div class="container mt-4 puff-in-center">
+          <?php $viewtable->viewDeniedData();?>
+        </div>  
+        <br>
 
  <!-- Footer-->
  <footer class="bg-dark py-4 mt-auto">
@@ -80,9 +91,9 @@ $viewtable = new viewtable();
             </div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/scripts.js"></script>
-        <script src="vendor/js/jquery.js"></script>
+        <script src="resource/js/scripts.js"></script>
         <script src="vendor/js/popper.js"></script>
         <script src="vendor/js/bootstrap.min.js"></script>
+        
 </body>
 </html>
