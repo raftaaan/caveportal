@@ -12,7 +12,6 @@ class config{
                 die($e->getMessage());
         }
         return $this->pdo;
-
     }
 }
 

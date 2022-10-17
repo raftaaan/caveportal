@@ -38,7 +38,11 @@ class view extends config{
             $rows =$data->fetchAll(PDO::FETCH_OBJ);
                 foreach ($rows as $row) {
                   echo '<option data-tokens=".'.$row->course_title.'." value="'.$row->course_title.'">'.$row->course_title.'</option>';
-                  echo 'success';
                 }
+        }
+
+        public function years() {
+          for ($i = 1950; $i <= 2022; $i++) 
+         echo '<option data-tokens=".'.$i.'." value="'.$i.'">'.$i.'</option>';
         }
 }

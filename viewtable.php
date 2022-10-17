@@ -73,17 +73,17 @@ public function viewApproveTable(){
 }
 
 //for clientdash
-public function viewData_client(){
+public function viewData_clients(){
   $con = $this->con();
   $sql = "SELECT * FROM `tbl_client_user`";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>Verification Requests</h3>";
+  echo "<div class='table-responsive'>";
   echo "<table class='table table-dark table-stripe table-sm'>";
   echo "<thead>
           <tr>
-          <th>Student ID</th>
           <th>First Name</th>
           <th>Middle Name</th>
           <th>Last Name</th>
@@ -96,7 +96,6 @@ public function viewData_client(){
   <tbody>";
   foreach ($result as $data) {
     echo "<tr>";
-    echo "<td>$data[studentID]</td>";
     echo "<td>$data[firstName]</td>";
     echo "<td>$data[middleName]</td>";
     echo "<td>$data[lastName]</td>";

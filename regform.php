@@ -44,8 +44,13 @@ $view = new view;
     
       <section class="wrapper">
         <div class="container mt-2 slide-in-left rounded shadow-sm" data-aos="fade-down"  data-aos-duration="1500">
-          
-            <form action="" method="POST" class="rounded bg-white shadow py-4 px-4">
+          <?php 
+            if(!empty($_POST)){
+              $insert = new insert($_POST['firstName'],$_POST['middleName'],$_POST['lastName'],$_POST['degree'], $_POST['yearsGrad'],$_FILES['diploma'], $_FILES['consent']);
+              $insert->insertVerification();
+              }
+              ?>
+            <form action="" method="POST" class="rounded bg-white shadow py-4 px-4" enctype="multipart/form-data">
               <div class="row">
                 <div class=" form-group col-md-12">
                     <h3 class="text-center mb-4 title-header" >New Application for Candidate Verification</h3>
@@ -84,6 +89,7 @@ $view = new view;
                   <label for="yearsGrad" >Year Graduated</label>
                   <select name="yearsGrad" id="yearsGrad" class="selectpicker form-select" data-live-search="true">
                     <option value="">--- Select Year ---</option>
+                    <option value=""><?php $view->years();?></option>
                   </select>
                 </div>
               </div>
@@ -91,7 +97,7 @@ $view = new view;
               <div class="row border-top py-2">
                 <div class="form-group col-md-6">
                   <h5 class="text-start mt-2 mb-3" for="diploma">Upload Diploma <br /><span class="diploma-title">(Please provide diploma to as proof of authenticity.)</span></h5>
-                  <input id="diploma" class="form-control" accept=".pdf" type="file" name="diploma" onchange="validateSize(this)" >
+                  <input id="diploma" class="form-control" accept=".pdf" type="file" name="diploma"  >
                   <small class="text-muted"> <br />
                     *Please ensure the correctness of the pdf file. Incorrect requirements uploaded may <b>result to forfeiting of your application.</b></em></b></small>
                   <small class="text-muted"> <br />
@@ -100,7 +106,7 @@ $view = new view;
                 
                 <div class="form-group col-md-6">
                   <h5 class="text-start mt-2 mb-3" for="consent">Consent Form <br /><span class="diploma-title">(Please provide a consent form from the candidate.)</span></h5>
-                  <input id="consent" class="form-control" accept=".pdf" type="file" name="consent" onchange="validateSize(this)">
+                  <input id="consent" class="form-control" accept=".pdf" type="file" name="consent" >
                   <p>
                     <small class="text-muted" style="font-size: 60%;"><b>In accordance to Republic Act 10173 – Data Privacy Act of 2012</b><br />-By submitting this form, I am giving my consent to CEU to process my personal and sensitive information.
                     <br /> -By submitting this form, I also signify that I have read, understood and hereby state that everything stated above are true and correct.
@@ -142,7 +148,7 @@ $view = new view;
     <script src="vendor/js/popper.js"></script>
     <script src="vendor/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="resource/js/year.js"></script>
+
     <!-- <script src="resource/js/ft.js"></script> -->
     <script>
       $(document).ready(function(){
