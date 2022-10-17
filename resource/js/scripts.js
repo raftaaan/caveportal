@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 $(document).ready(function(){
     window.$('#candtable').dataTable({
         select: {
@@ -35,6 +36,8 @@ $(document).ready(function(){
     });
 });
 =======
+=======
+>>>>>>> Stashed changes
 $(document).ready(function(){
     window.$('#candtable').dataTable({
         select: {
@@ -70,4 +73,7 @@ $(document).ready(function(){
         }
     });
 });
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

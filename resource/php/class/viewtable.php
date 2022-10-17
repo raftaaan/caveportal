@@ -386,23 +386,32 @@ public function viewApproveTable(){
 }
 
 //for clientdash
-public function viewData_client(){
+public function viewData_clients(){
   $con = $this->con();
   $sql = "SELECT * FROM `tbl_client_user`";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>Completed Tasks</h3>";
+<<<<<<< Updated upstream
   echo "<table id='candtable' class='table table-light table-borderless table-sm table-hover shadow display' width='100%'>";
+=======
+  echo "<table id='candtable' class='table table-borderless  table-hover shadow' width='100%'>";
+>>>>>>> Stashed changes
   echo "<thead>";
   echo "<tr>";
   echo "<th scope='col'>First Name</th>";
   echo "<th scope='col'>Middle Name</th>";
   echo "<th scope='col'>Last Name</th>";
   echo "<th scope='col'>Degree</th>";
+<<<<<<< Updated upstream
   echo "<th scope='col'>Consent Form</th>";
   echo "<th scope='col'>Diploma</th>";
   echo "<th scope='col'>Status</th>";
+=======
+  echo "<th scope='col'>Status</th>";
+  echo "<th scope='col'>Actions</th>";
+>>>>>>> Stashed changes
   echo "</tr>";
   echo "</thead>";
   foreach ($result as $data) {
@@ -411,9 +420,15 @@ public function viewData_client(){
     echo "<td>$data[middleName]</td>";
     echo "<td>$data[lastName]</td>";
     echo "<td>$data[degree]</td>";
+<<<<<<< Updated upstream
     echo "<td>$data[consentForm]</td>";
     echo "<td>$data[diploma]</td>";
+=======
+>>>>>>> Stashed changes
     echo "<td>$data[status]</td>";
+    echo "<td><a class='btn btn-sm icons'href='#'><i class='bi bi-person-lines-fill'></i>
+    <a class='btn btn-sm icons'href='#'><i class='bi bi-download'></i>
+   </a></td>";
     echo "</tr>";
   }
 

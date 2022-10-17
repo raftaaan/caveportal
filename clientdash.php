@@ -288,6 +288,10 @@ $viewtable = new viewtable();
         <link href="vendor/css/quill.snow.css" rel="stylesheet">
         <link href="vendor/css/quill.bubble.css" rel="stylesheet">
         <link href="vendor/css/remixicon.css" rel="stylesheet">
+<<<<<<< Updated upstream
+=======
+        <link href="resource/css/clientdash.css" rel="stylesheet">
+>>>>>>> Stashed changes
         <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
         <link href="vendor/css/style.css" rel="stylesheet">
         <script src="vendor/js/jquery.js"></script>
@@ -301,11 +305,19 @@ $viewtable = new viewtable();
 </head>
 <body class="d-flex flex-column h-100">
     <header id="header" class="header fixed-top d-flex align-items-center">
+<<<<<<< Updated upstream
         <div class="d-flex align-items-center justify-content-between"> <a href="clientdashhh.html" class="logo d-flex align-items-center"> <img src="resource/img/CAVElogo.png" alt=""> <span class="d-none d-lg-block">Client</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
     </header>
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item"> <a class="nav-link " href="clientdashhh.html"> <i class="bi bi-grid"></i><span>Dashboard</span></a></li>
+=======
+        <div class="d-flex align-items-center justify-content-between"> <a href="clientdash.php" class="logo d-flex align-items-center"> <img src="resource/img/CAVElogo.png" alt=""> <span class="d-none d-lg-block">Client</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
+    </header>
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item"> <a class="nav-link " href="clientdash.php"> <i class="bi bi-grid"></i><span>Dashboard</span></a></li>
+>>>>>>> Stashed changes
             <li class="nav-heading">Pages</li>
             <li class="nav-item"> <a class="nav-link collapsed" href="clientprofile.html"> <i class="bi bi-person"></i> <span>Profile</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="logout.php"> <i class="bi bi-box-arrow-in-right"></i> <span>Log out</span> </a></li>
@@ -316,7 +328,11 @@ $viewtable = new viewtable();
             <h1>Dashboard</h1>
             <nav>
                <ol class="breadcrumb">
+<<<<<<< Updated upstream
                   <li class="breadcrumb-item"><a href="clientdashhh.html">Home</a></li>
+=======
+                  <li class="breadcrumb-item"><a href="clientdash.php">Home</a></li>
+>>>>>>> Stashed changes
                   <li class="breadcrumb-item active">Dashboard</li>
                </ol>
             </nav>
@@ -340,8 +356,13 @@ $viewtable = new viewtable();
                            </div>
                            <div class="card-body">
                               <h5 class="card-title">Recent Applications <span>| Today</span></h5>
+<<<<<<< Updated upstream
                               <a href="regform.php" type="btn">Request New Verification</a>
                               <?php $viewtable->viewData_client()?>
+=======
+                              <a href="regform.php" type="btn" class="reqbtn"><i class="bi bi-person-plus-fill"></i>&nbsp&nbsp<span class="">Request New Verification</span></a>
+                              <?php $viewtable->viewData_clients()?>
+>>>>>>> Stashed changes
                               
                            </div>
                         </div>

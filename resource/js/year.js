@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 window.onload = function () {
     //Reference the DropDownList.
     var ddlYears = document.getElementById("yearsGrad");
@@ -12,4 +13,20 @@ window.onload = function () {
         option.value = i;
         ddlYears.appendChild(option);
     }
+=======
+window.onload = function () {
+    //Reference the DropDownList.
+    var ddlYears = document.getElementById("yearsGrad");
+
+    //Determine the Current Year.
+    var currentYear = (new Date()).getFullYear();
+
+    //Loop and add the Year values to DropDownList.
+    for (var i = 1950; i <= currentYear; i++) {
+        var option = document.createElement("OPTION");
+        option.innerHTML = i;
+        option.value = i;
+        ddlYears.appendChild(option);
+    }
+>>>>>>> Stashed changes
 };
