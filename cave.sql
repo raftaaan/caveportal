@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 12, 2022 at 10:00 AM
+-- Generation Time: Oct 17, 2022 at 10:51 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.1.33
 
@@ -154,32 +154,45 @@ CREATE TABLE IF NOT EXISTS `tbl_client_user` (
   `firstName` varchar(255) COLLATE utf8_bin NOT NULL,
   `middleName` varchar(255) COLLATE utf8_bin NOT NULL,
   `lastName` varchar(255) COLLATE utf8_bin NOT NULL,
-  `studentID` varchar(255) COLLATE utf8_bin NOT NULL,
   `degree` varchar(255) COLLATE utf8_bin NOT NULL,
+  `yearsGrad` varchar(100) COLLATE utf8_bin NOT NULL,
   `status` varchar(20) COLLATE utf8_bin NOT NULL DEFAULT 'PENDING',
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_completed` datetime DEFAULT NULL,
   `diploma` varchar(255) COLLATE utf8_bin NOT NULL,
-  `consentForm` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `consentForm` varchar(255) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `tbl_client_user`
 --
 
-INSERT INTO `tbl_client_user` (`id`, `agentID`, `firstName`, `middleName`, `lastName`, `studentID`, `degree`, `status`, `date_added`, `date_completed`, `diploma`, `consentForm`) VALUES
-(1, 1, 'Ealyza', 'Torres', 'Valencia', '2019-12321', 'BSIT', '', '2022-10-07 21:37:45', NULL, 'ABC', 'ABCDEF'),
-(2, 2, 'Migs', 'SD', 'Tuazon', '2019-22192', 'BSIT', 'APPROVED', '2022-10-07 21:48:51', NULL, '12345', '78293'),
-(3, 3, 'Ralphy ', 'Mariano', 'Tulfo', '2019-30338', 'BSMT', 'PENDING', '2022-10-08 09:27:57', '2022-10-08 01:24:42', 'May diploma\r\n', 'Yes'),
-(4, 4, 'JunJun', 'Mariano', 'Cruz', '2019-44444', 'BSA', 'ON-HOLD', '2022-10-08 09:27:57', '2022-10-08 01:24:42', 'YES', 'YES'),
-(5, NULL, 'John Noel', 'Ayson', 'Gita', '20190-3045', '1', 'PENDING', '2022-10-08 11:21:14', NULL, '', NULL),
-(6, NULL, 'Jullan Nick', 'Ayson', 'Gita', '2019-30458', '1', 'PENDING', '2022-10-10 20:51:03', NULL, '', NULL),
-(7, NULL, 'Jullan Nick', 'Ayson', 'Gita', '2019-30458', '1', 'PENDING', '2022-10-10 20:56:05', NULL, '', NULL),
-(19, NULL, 'Migs', 'T', 'Tuazon', '1232-44444', 'Bachelor of Science in Business Administration Major in Financial Management (ABM) (BSBAFM-ABM)', 'PENDING', '2022-10-10 23:55:34', NULL, '', NULL),
-(22, NULL, 'Jullan Nick', 'Ayson', 'Gita', '2019-30458', 'Bachelor of Science in Medical Technology (BSMT)', 'PENDING', '2022-10-11 00:24:12', NULL, '', NULL),
-(21, NULL, 'Ralphy', 'Pinoy', 'Tan', '2019-30338', 'Bachelor of Science in Business Administration Major in International Management (BSBAIM)', 'PENDING', '2022-10-10 23:57:23', NULL, '', NULL),
-(20, NULL, 'John Noel', 'Ayson', 'Gita', '2019-30459', 'Bachelor of Science in Information Technology (BSIT)', 'PENDING', '2022-10-10 23:56:05', NULL, '', NULL);
+INSERT INTO `tbl_client_user` (`id`, `agentID`, `firstName`, `middleName`, `lastName`, `degree`, `yearsGrad`, `status`, `date_added`, `date_completed`, `diploma`, `consentForm`) VALUES
+(1, 1, 'Ealyza', 'Torres', 'Valencia', 'BSIT', '', '', '2022-10-07 21:37:45', NULL, 'ABC', '0'),
+(2, 2, 'Migs', 'SD', 'Tuazon', 'BSIT', '', 'APPROVED', '2022-10-07 21:48:51', NULL, '12345', '0'),
+(3, 3, 'Ralphy ', 'Mariano', 'Tulfo', 'BSMT', '', 'ON-HOLD', '2022-10-08 09:27:57', '2022-10-14 22:35:02', 'May diploma\r\n', '0'),
+(4, 4, 'JunJun', 'Mariano', 'Cruz', 'BSA', '', 'ON-HOLD', '2022-10-08 09:27:57', '2022-10-08 01:24:42', 'YES', '0'),
+(5, NULL, 'John Noel', 'Ayson', 'Gita', '1', '', 'APPROVED', '2022-10-08 11:21:14', '2022-10-17 14:43:30', '', '0'),
+(6, NULL, 'Jullan Nick', 'Ayson', 'Gita', '1', '', 'PENDING', '2022-10-10 20:51:03', NULL, '', '0'),
+(7, NULL, 'Jullan Nick', 'Ayson', 'Gita', '1', '', 'PENDING', '2022-10-10 20:56:05', NULL, '', '0'),
+(19, NULL, 'Migs', 'T', 'Tuazon', 'Bachelor of Science in Business Administration Major in Financial Management (ABM) (BSBAFM-ABM)', '', 'APPROVED', '2022-10-10 23:55:34', '2022-10-14 22:34:54', '', '0'),
+(22, NULL, 'Jullan Nick', 'Ayson', 'Gita', 'Bachelor of Science in Medical Technology (BSMT)', '', 'PENDING', '2022-10-11 00:24:12', NULL, '', '0'),
+(21, NULL, 'Ralphy', 'Pinoy', 'Tan', 'Bachelor of Science in Business Administration Major in International Management (BSBAIM)', '', 'DENIED', '2022-10-10 23:57:23', '2022-10-14 22:35:44', '', '0'),
+(20, NULL, 'John Noel', 'Ayson', 'Gita', 'Bachelor of Science in Information Technology (BSIT)', '', 'PENDING', '2022-10-10 23:56:05', NULL, '', '0'),
+(24, NULL, 'Rigel', 'Kent', 'Cruz', 'Bachelor of Science in Information Technology (BSIT)', '', 'PENDING', '2022-10-15 18:28:55', NULL, 'resource/files/diploma_files/Cruz.pdf', 'resource/files/consent_forms/Cruz.pdf'),
+(25, NULL, 'Rigel', 'Kent', 'Cruz', 'Bachelor of Science in Information Technology (BSIT)', '', 'APPROVED', '2022-10-15 18:28:56', '2022-10-17 14:43:38', 'resource/files/diploma_files/Cruz.pdf', 'resource/files/consent_forms/Cruz.pdf'),
+(26, NULL, 'Rigel', 'Kent', 'Cruz', 'Bachelor of Science in Information Technology (BSIT)', '', 'PENDING', '2022-10-15 18:29:03', NULL, 'resource/files/diploma_files/Cruz.pdf', 'resource/files/consent_forms/Cruz.pdf'),
+(27, NULL, 'Juan Miguel ', 'Guzman', 'Guzman', 'Bachelor of Science in Business Administration Major in International Management (BSBAIM)', '', 'PENDING', '2022-10-15 19:58:25', NULL, 'resource/files/diploma_files/Guzman.pdf', 'resource/files/consent_forms/Guzman.pdf'),
+(28, NULL, 'QWE', 'QEW', 'QWE', 'Bachelor of Special Needs Education', '', 'PENDING', '2022-10-15 19:58:48', NULL, 'resource/files/diploma_files/QWE.pdf', 'resource/files/consent_forms/QWE.pdf'),
+(29, NULL, 'QWE', 'QEW', 'QWE', 'Bachelor of Special Needs Education', '', 'PENDING', '2022-10-15 20:04:37', NULL, 'resource/files/diploma_files/QWE.pdf', 'resource/files/consent_forms/QWE.pdf'),
+(30, NULL, 'QWE', 'QEW', 'QWE', 'Bachelor of Special Needs Education', '', 'PENDING', '2022-10-15 20:04:49', NULL, 'resource/files/diploma_files/QWE.pdf', 'resource/files/consent_forms/QWE.pdf'),
+(31, NULL, 'Jemiah ', 'Kim', 'Del Rosario', 'Bachelor of Science in Nursing (STEM) (BSN-STEM)', '', 'PENDING', '2022-10-15 20:05:37', NULL, 'resource/files/diploma_files/Del Rosario.pdf', 'resource/files/consent_forms/Del Rosario.pdf'),
+(32, NULL, 'Jemiah ', 'Kim', 'Del Rosario', 'Bachelor of Science in Nursing (STEM) (BSN-STEM)', '', 'PENDING', '2022-10-15 20:06:08', NULL, 'resource/files/diploma_files/Del Rosario.pdf', 'resource/files/consent_forms/Del Rosario.pdf'),
+(33, NULL, 'John Alexander ', 'Tan', 'Espiritu', 'Bachelor of Science in Medical Technology (BSMT)', '', 'PENDING', '2022-10-15 20:12:33', NULL, 'resource/files/diploma_files/Espiritu.pdf', 'resource/files/consent_forms/Espiritu.pdf'),
+(34, NULL, 'John Noel', 'Ayson', 'Gita', 'Bachelor of Science in Accountancy (BSA)', '2021', 'PENDING', '2022-10-17 18:49:19', NULL, 'resource/files/diploma_files/Gita.pdf', 'resource/files/consent_forms/Gita.pdf'),
+(35, NULL, 'Anya', 'Miclat', 'David', 'Bachelor of Science in Accountancy (BSA)', '2022', 'PENDING', '2022-10-17 18:50:13', NULL, 'resource/files/diploma_files/David.pdf', 'resource/files/consent_forms/David.pdf'),
+(36, NULL, 'John Noel', 'Ayson', 'Gita', 'Bachelor of Science in Accountancy (BSA)', '2021', 'PENDING', '2022-10-17 18:50:13', NULL, 'resource/files/diploma_files/Gita.pdf', 'resource/files/consent_forms/Gita.pdf');
 
 -- --------------------------------------------------------
 
