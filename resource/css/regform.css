@@ -84,7 +84,7 @@ body{
     background-attachment: fixed;
     background-size:contain;
     min-height: 100%;
-    margin-bottom: -90px;
+    margin-bottom: -70px;
 }
 .wrapper .logo img{
     max-width:40%;
@@ -3139,6 +3139,11 @@ textarea.form-control-lg {
   background-color:#f04e98;
   color: #151515;
   transition: 0.3s ease;
+}
+
+.back_btn {
+  color: #A6A9B6;
+  opacity: 0.4;
 }
 
 .btn {

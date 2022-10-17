@@ -72,45 +72,38 @@ public function viewApproveTable(){
 }
 
 //for clientdash
-public function viewData_client(){
+public function viewData_clients(){
   $con = $this->con();
   $sql = "SELECT * FROM `tbl_client_user`";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>Completed Tasks</h3>";
-  echo "<table class='table table-dark table-stripe table-sm'>";
-  echo "<thead>
-          <tr>
-          <th>Student ID</th>
-          <th>Agent ID</th>
-          <th>First Name</th>
-          <th>Middle Name</th>
-          <th>Last Name</th>
-          <th>Degree</th>
-          <th>Date Added</th>
-          <th>Date Completed</th>
-          <th>Consent Form</th>
-          <th>Diploma</th>
-          <th>Status</th>
-          </tr>
-  </thead><tbody>";
+  echo "<table id='candtable' class='table table-borderless  table-hover shadow' width='100%'>";
+  echo "<thead>";
+  echo "<tr>";
+  echo "<th scope='col'>First Name</th>";
+  echo "<th scope='col'>Middle Name</th>";
+  echo "<th scope='col'>Last Name</th>";
+  echo "<th scope='col'>Degree</th>";
+  echo "<th scope='col'>Status</th>";
+  echo "<th scope='col'>Actions</th>";
+  echo "</tr>";
+  echo "</thead>";
   foreach ($result as $data) {
     echo "<tr>";
-    echo "<td>$data[studentID]</td>";
-    echo "<td>$data[agentID]</td>";
     echo "<td>$data[firstName]</td>";
     echo "<td>$data[middleName]</td>";
     echo "<td>$data[lastName]</td>";
     echo "<td>$data[degree]</td>";
-    echo "<td>$data[date_added]</td>";
-    echo "<td>$data[date_completed]</td>";
-    echo "<td>$data[consentForm]</td>";
-    echo "<td>$data[diploma]</td>";
     echo "<td>$data[status]</td>";
+    echo "<td><a class='btn btn-sm icons'href='#'><i class='bi bi-person-lines-fill'></i>
+    <a class='btn btn-sm icons'href='#'><i class='bi bi-download'></i>
+   </a></td>";
     echo "</tr>";
   }
-  echo "</tbody></table>";
+
+  echo "</table>";
 }
 
 
@@ -121,7 +114,7 @@ public function viewApprovedData(){
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>APPROVED APPLICATIONS</h3>";
-  echo "<table class='table table-dark table-stripe table-sm'>";
+  echo "<table id='candtable' class='table table-dark table-stripe table-sm'>";
   echo "<thead>
           <tr>
           <th>Student ID</th>
@@ -142,7 +135,7 @@ public function viewApprovedData(){
   </thead><tbody>";
   foreach ($result as $data) {
       echo "<tr>";
-      echo "<td>$data[studentID]</td>";
+      echo "<td class='d-none d-sm-table-cell'>$data[studentID]</td>";
       echo "<td>$data[agentID]</td>";
       echo "<td>$data[firstName]</td>";
       echo "<td>$data[middleName]</td>";
@@ -173,7 +166,7 @@ public function viewOnHoldData(){
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>ON-HOLD APPLICATIONS</h3>";
-  echo "<table class='table table-dark table-stripe table-sm'>";
+  echo "<table id='onHoldtable' class='table table-dark table-stripe table-sm'>";
   echo "<thead>
           <tr>
           <th>Student ID</th>
@@ -221,7 +214,7 @@ public function viewPendingData(){
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>PENDING APPLICATIONS</h3>";
-  echo "<table class='table table-dark table-stripe table-sm'>";
+  echo "<table id='pendingtable' class='table table-dark table-stripe table-sm'>";
   echo "<thead>
           <tr>
           <th>Student ID</th>
@@ -270,7 +263,7 @@ public function viewDeniedData(){
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>DENIED APPLICATIONS</h3>";
-  echo "<table class='table table-dark table-stripe table-sm'>";
+  echo "<table id='deniedtable' class='table table-dark table-stripe table-sm'>";
   echo "<thead>
           <tr>
           <th>Student ID</th>

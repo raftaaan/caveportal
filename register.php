@@ -13,32 +13,41 @@ $view = new view;
    <title>Registrar Portal</title>
    <link rel="stylesheet" type="text/css"  href="vendor/css/bootstrap.min.css">
    <link href="vendor/css/all.css" rel="stylesheet">
-   <link rel="stylesheet" type="text/css"  href="resource/css/styles.css">
+   <link rel="stylesheet" type="text/css"  href="resource/css/index.css">
    <link rel="stylesheet" type="text/css"  href="vendor/css/bootstrap-select.min.css">
 
  </head>
  <body>
-         <nav class="navbar navbar-dark bg-white shadow-sm slide-in-left">
-           <a class="navbar-brand" href="https://malolos.ceu.edu.ph/">
-             <img src="resource/img/logo.jpg" height="70" class="d-inline-block align-top"
-               alt="mdb logo"><h3 class="ib">
-           </a>
-           <a href="exportTableAdmin.php"><i class="fas fa-table ceucolor"></i></a>
-           <a href="statsAdmin.php"><i class="fas fa-chart-line ceucolor"></i></a>
-           <a href="userVerificationAdmin.php"><i class="fas fa-user-plus ceucolor"></i></a>
-           <a href="verificationAdmin.php"><i class="fas fa-user-graduate ceucolor"></i></a>
-           <a href="viewAlumniAdmin.php"><i class="fa fa-graduation-cap ceucolor"></i></a>
-           <a href="nTransactionAdmin.php"><i class="fas fa-file-upload ceucolor"></i></a>
-           <a href="view_pending_requests.php"><i class="fas fa-home ceucolor"></i></a>
-           <a href="htt ps:/www.facebook.com/theCEUofficial/"><i class="fab fa-facebook-f ceucolor"></i></a>
-           <a href="https://www.instagram.com/ceuofficial/"><i class="fab fa-instagram ceucolor"></i></a>
-           <a href="https://twitter.com/ceumalolos"><i class="fab fa-twitter ceucolor"></i></a>
-         </nav>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="http://malolos.ceu.edu.ph">
+                        <img src="resource/img/logo.png" alt="" width="230" height="65" class="d-inline-block align-top"/>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login.php">Alumni Verification</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login.php">Check Status</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#esco-world">Escolarians Around the World</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">My Account</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                    <li><a class="dropdown-item" href="login.php">Log in</a></li>
+                                    <li><a class="dropdown-item" href="register.php">Register</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
          <div class="container mt-4 puff-in-center">
              <div class="row">
                  <div class="col-12">
-                     <h1 class="text-center">Register New Student Records Assistant</h1>
+                     <h1 class="text-center">Register an Account</h1>
+                     <div class="fw-normal text-muted mb-4"> New Here?
+                                    <a href="register.php #inq" class="text-primary fw-bold text-decoration-none">Inquire for an Account</a>
+                                </div>
                  </div>
             </div>
             <?php

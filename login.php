@@ -40,7 +40,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init
                             <form class="rounded bg-white shadow py-5 px-4" method="POST">
                                 <h3 class="text-dark fw-bolder fs-4 mb-2">Sign In</h3>
                                 <div class="fw-normal text-muted mb-4"> New Here?
-                                    <a href="index.php #inq" class="text-primary fw-bold text-decoration-none">Inquire for an Account</a>
+                                    <a href="register.php #inq" class="text-primary fw-bold text-decoration-none">Inquire for an Account</a>
                                 </div>
                                 <?php logd();?>
                                 <div class="form-floating mb-3">
