@@ -5,7 +5,7 @@ require_once 'config.php';
 
 class insert extends config{
 
-    public $studentID, $firstName, $middleName, $lastName, $degree, $yearsGrad, $diploma, $consent, $certificate, $letterForm;
+    public $firstName, $middleName, $lastName, $degree, $yearsGrad, $diploma, $consent, $certificate, $letterForm;
 
     function __construct($firstName=null, $middleName=null, $lastName=null, $degree=null, $yearsGrad=null, $diploma=null, $consent=null){
         
@@ -18,29 +18,26 @@ class insert extends config{
         $ext = pathinfo($this->diploma['name'], PATHINFO_EXTENSION);
         $this->consent = $consent;
         $form = pathinfo($this->consent['name'], PATHINFO_EXTENSION);
+        $message = "Success.";
 
         if($this->firstName == ""){
             $message = "First Name is required!";
         }else if(!ctype_alpha(str_replace(' ', '', $this->firstName))){
             $message = "First Name is not applicable!";
-<<<<<<< Updated upstream
         }else if(!ctype_alpha(str_replace(' ', '', $this->middleName))){
-=======
-        }else if(ctype_digit(str_replace(' ', '', $this->middleName))){
->>>>>>> Stashed changes
             $message = "Middle Name is not applicable!";
         }else if($this->lastName == ""){
             $message = "Last Name is required!";
         }else if(!ctype_alpha(str_replace(' ', '', $this->lastName))){
             $message = "Last Name is not applicable!";
-        }else if(empty($this->degree)){
-            $message = "Selecting Course is required!!";
-        }else if(empty($this->yearsGrad)){
+        }else if($this->degree == ""){
+            $message = "Please select the course that the alumna/alumnus took.";
+        }else if($this->yearsGrad == ""){
             $message = "Please select the year the alumna/alumnus graduated.";
         }else if($ext !== "pdf" || $ext == ""){
             $message = "Please upload the diploma of the alumna/alumnus.";  
         }else if($form !== "pdf" || $form == ""){
-            $message = "Must upload a pdf file!";  
+            $message = "Please upload the consent letter from alumna/alumnus.";  
         }else{
             $ext = strtolower(pathinfo($this->diploma['name'], PATHINFO_EXTENSION));
             $this->diploma['name'] = $this->lastName.".".$ext;
@@ -62,7 +59,6 @@ class insert extends config{
                 $this->letterForm = '';
             }
             $this->insertVerification();
-
         }
         echo "<script>alert('$message');</script>";
     }
