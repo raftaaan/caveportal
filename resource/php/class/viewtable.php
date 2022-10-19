@@ -100,7 +100,7 @@ public function viewData_clients(){
     echo "<td>$data[lastName]</td>";
     echo "<td>$data[degree]</td>";
     echo "<td>$data[status]</td>";
-    echo "<td><a class='btn btn-sm icons'href='#'><i class='bi bi-person-lines-fill'></i>
+    echo "<td><a class='btn btn-sm icons'href='#'><i class='bi bi-person-lines-fill'></i></a>
     <a class='btn btn-sm icons'href='#'><i class='bi bi-download'></i>
    </a></td>";
     echo "</tr>";
@@ -153,10 +153,9 @@ public function viewApprovedData(){
       echo "<td>$data[date_completed]</td>";
       echo "<td>$data[status]</td>";
       echo "<td>      </td>";
-
-
       echo "<td>
-      <a class=' btn btn-primary btn-sm' href='adminfunctions.php?delete=$data[id]'>Delete </a>
+      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-file-earmark-x-fill'></i></a>
+      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill'></i></a>
 
       </td>";
       echo "</tr>";
@@ -203,9 +202,9 @@ public function viewOnHoldData(){
       echo "<td>$data[status]</td>";
       echo "<td>      </td>";
       echo "<td>
-      <a class='btn btn-success btn-sm' href='adminfunctions.php?approvedstatus=$data[id]'>Mark as APPROVED</a><br>
-      <a class='btn btn-danger btn-sm'href='adminfunctions.php?deniedstatus=$data[id]'>Mark as DENIED</a><br>
-      <a class=' btn btn-primary btn-sm' href='adminfunctions.php?delete=$data[id]'>Delete </a>
+      <a class='btn btn-sm' href='adminfunctions.php?approvedstatus=$data[id]'><i class='bi bi-check-square-fill'></i></a><br>
+      <a class='btn btn-sm'href='adminfunctions.php?deniedstatus=$data[id]'><i class='bi bi-file-earmark-x-fill'></i></a><br>
+      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill'></i></a>
 
       </td>";
       echo "</tr>";
@@ -250,10 +249,10 @@ public function viewPendingData(){
       echo "<td>$data[status]</td>";
       echo "<td>      </td>";
       echo "<td>   
-      <a class='btn btn-success btn-sm' href='adminfunctions.php?approvedstatus=$data[id]'>Mark as APPROVED</a><br>
-      <a class='btn btn-warning btn-sm'href='adminfunctions.php?onholdstatus=$data[id]'>Mark as ON-HOLD</a><br>
-      <a class='btn btn-danger btn-sm'href='adminfunctions.php?deniedstatus=$data[id]'>Mark as DENIED</a><br>
-      <a class=' btn btn-primary btn-sm' href='adminfunctions.php?delete=$data[id]'>Delete </a>
+      <a class='btn btn-sm' href='adminfunctions.php?approvedstatus=$data[id]'><i class='bi bi-check-square-fill'></i></a><br>
+      <a class='btn btn-sm'href='adminfunctions.php?onholdstatus=$data[id]'><i class='bi bi-hourglass-split'></i></a><br>
+      <a class='btn btn-sm'href='adminfunctions.php?deniedstatus=$data[id]'><i class='bi bi-file-earmark-x-fill'></i></a><br>
+      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill'></i></a>
 
       </td>";
       echo "</tr>";
@@ -268,7 +267,11 @@ public function viewDeniedData(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>DENIED APPLICATIONS</h3>";
   echo "<div class='table-responsive'>";
+<<<<<<< Updated upstream
   echo "<table id='deniedtable' class='table table-borderless  table-hover shadow' width='100%'>";
+=======
+  echo "<table id='deniedtable' class='table table-borderless table-hover shadow' width='100%'>";
+>>>>>>> Stashed changes
   echo "<thead>
           <tr>
           <th scope='col'>Agent ID</th>
@@ -302,7 +305,7 @@ public function viewDeniedData(){
 
 
       echo "<td>
-      <a class=' btn btn-primary btn-sm' href='adminfunctions.php?delete=$data[id]'>Delete </a>
+      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill'></i></a>
 
       </td>";
       echo "</tr>";

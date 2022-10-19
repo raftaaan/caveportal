@@ -23,7 +23,11 @@ class insert extends config{
             $message = "First Name is required!";
         }else if(!ctype_alpha(str_replace(' ', '', $this->firstName))){
             $message = "First Name is not applicable!";
+<<<<<<< Updated upstream
         }else if(!ctype_alpha(str_replace(' ', '', $this->middleName))){
+=======
+        }else if(ctype_digit(str_replace(' ', '', $this->middleName))){
+>>>>>>> Stashed changes
             $message = "Middle Name is not applicable!";
         }else if($this->lastName == ""){
             $message = "Last Name is required!";

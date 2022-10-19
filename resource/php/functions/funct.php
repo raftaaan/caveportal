@@ -308,9 +308,12 @@ function onholdClient(){
     if(!empty($_GET['onholdstatus'])){
         $edit = new edit($_GET['onholdstatus']);
         if($edit->editOnhold()){
+ 
     }
     else {
+
     }
+
     }
 }
 function deniedClient(){

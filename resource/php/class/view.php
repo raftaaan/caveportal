@@ -43,12 +43,20 @@ class view extends config{
         public function countries(){
           $config = new config;
           $con = $config->con();
+<<<<<<< Updated upstream
           $sql = "SELECT * FROM `countries`";
+=======
+          $sql = "SELECT * FROM `tbl_countries`";
+>>>>>>> Stashed changes
           $data = $con->prepare($sql);
           $data ->execute();
           $rows =$data->fetchAll(PDO::FETCH_OBJ);
               foreach ($rows as $row) {
+<<<<<<< Updated upstream
                 echo '<option data-tokens=".'.$row->country_name.'." value="'.$row->country_name.'">'.$row->country_name.'</option>';
+=======
+                echo '<option data-tokens=".'.$row->countryname.'." value="'.$row->countryname.'">'.$row->countryname.'</option>';
+>>>>>>> Stashed changes
               }
       }
 

@@ -131,7 +131,11 @@ $agentID = $user->data()->id;
         
 
         <!-- Footer-->
+<<<<<<< Updated upstream
         <footer id="footer" class="footer fixed">
+=======
+        <footer id="footer" class="footer">
+>>>>>>> Stashed changes
          <div class="copyright"> &copy; Copyright <strong>Centro Escolar University</span></strong>. All Rights Reserved</div>
          <div class="credits">Manila | Malolos| Makati</div>
         </footer>

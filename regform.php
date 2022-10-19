@@ -2,7 +2,10 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init.php';
 isLogin();
 $view = new view;
+<<<<<<< Updated upstream
 $user = new user();
+=======
+>>>>>>> Stashed changes
 
 ?>
 
@@ -29,6 +32,7 @@ $user = new user();
     <main class="flex-shrink-0">
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-aos="fade-down" data-aos-duration="1500">
+<<<<<<< Updated upstream
         <div class="container px-5">
           <a class="navbar-brand" href="clientdash.php">
             <img src="resource/img/CAVElogo-white.png" alt="" width="150" height="65" class="d-inline-block align-top"/>
@@ -46,6 +50,11 @@ $user = new user();
                 </li>
               </ul>
             </div>
+=======
+        <div class="container px-5 justify-content-center">
+          <a class="navbar-brand" href="clientdash.php">
+            <img src="resource/img/CAVElogo-white.png" alt="" width="150" height="65" class="d-inline-block align-top"/></a>
+>>>>>>> Stashed changes
         </div>
       </nav>
     
@@ -54,12 +63,17 @@ $user = new user();
           <?php 
             if(!empty($_POST)){
               $insert = new insert($_POST['firstName'],$_POST['middleName'],$_POST['lastName'],$_POST['degree'], $_POST['yearsGrad'],$_FILES['diploma'], $_FILES['consent']);
+<<<<<<< Updated upstream
+=======
+            
+>>>>>>> Stashed changes
               }
               ?>
             <form action="" method="POST" class="rounded bg-white shadow py-4 px-4" enctype="multipart/form-data">
               <div class="row">
                 <div class=" form-group col-md-12">
-                    <h3 class="text-center mb-4 title-header" >New Application for Candidate Verification</h3>
+                <a class="back-btn" href="clientdash.php"><i class="bi bi-arrow-left-circle-fill"></i></a>
+                <h3 class="text-center mb-4 title-header">New Application for Candidate Verification</h3>
                 </div>
               </div>
               <div class="row border-top py-2">
@@ -128,10 +142,10 @@ $user = new user();
                 </div>
               </div>
 
-              <div class="row border-top py-3 justify-content-end">
-                <div class="form-group col-md-8">
+              <div class="row border-top py-3 justify-content-start">
+                <div class="form-group col-md-">
                   <input type="hidden" name="Token" value="<?php echo Token::generate();?>"/>
-                  <button type="submit" id="myButton1" class="submit_btn btn-mdmt-2">
+                  <button type="submit" id="myButton1" class="submit_btn btn-md">
                   Submit Application
                   </button>
                 </div>
@@ -160,6 +174,7 @@ $user = new user();
     <script src="vendor/js/jquery.js"></script>
     <script src="vendor/js/popper.js"></script>
     <script src="vendor/js/bootstrap.min.js"></script>
+    <script src="vendor/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- <script src="resource/js/ft.js"></script> -->

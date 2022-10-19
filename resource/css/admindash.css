@@ -1,0 +1,20 @@
+thead th {
+    background-color: #251f70 !important; 
+    color: #f5f5f5;
+  }
+.bi-file-earmark-x-fill {
+    color: #EB1D36;
+    font-size:25px;
+}
+.bi-hourglass-split {
+    color: #FFD700;
+    font-size:25px;
+}
+.bi-check-square-fill {
+    color: #1C6758;
+    font-size:25px;
+}
+.bi-trash-fill {
+    color: #06283D;
+    font-size:25px;
+}
