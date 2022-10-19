@@ -2,10 +2,9 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init.php';
 isLogin();
 $view = new view;
-<<<<<<< Updated upstream
+
 $user = new user();
-=======
->>>>>>> Stashed changes
+
 
 ?>
 
@@ -32,7 +31,6 @@ $user = new user();
     <main class="flex-shrink-0">
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-aos="fade-down" data-aos-duration="1500">
-<<<<<<< Updated upstream
         <div class="container px-5">
           <a class="navbar-brand" href="clientdash.php">
             <img src="resource/img/CAVElogo-white.png" alt="" width="150" height="65" class="d-inline-block align-top"/>
@@ -50,11 +48,6 @@ $user = new user();
                 </li>
               </ul>
             </div>
-=======
-        <div class="container px-5 justify-content-center">
-          <a class="navbar-brand" href="clientdash.php">
-            <img src="resource/img/CAVElogo-white.png" alt="" width="150" height="65" class="d-inline-block align-top"/></a>
->>>>>>> Stashed changes
         </div>
       </nav>
     
@@ -63,10 +56,6 @@ $user = new user();
           <?php 
             if(!empty($_POST)){
               $insert = new insert($_POST['firstName'],$_POST['middleName'],$_POST['lastName'],$_POST['degree'], $_POST['yearsGrad'],$_FILES['diploma'], $_FILES['consent']);
-<<<<<<< Updated upstream
-=======
-            
->>>>>>> Stashed changes
               }
               ?>
             <form action="" method="POST" class="rounded bg-white shadow py-4 px-4" enctype="multipart/form-data">

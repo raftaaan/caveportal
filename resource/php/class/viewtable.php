@@ -267,11 +267,10 @@ public function viewDeniedData(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>DENIED APPLICATIONS</h3>";
   echo "<div class='table-responsive'>";
-<<<<<<< Updated upstream
+
   echo "<table id='deniedtable' class='table table-borderless  table-hover shadow' width='100%'>";
-=======
   echo "<table id='deniedtable' class='table table-borderless table-hover shadow' width='100%'>";
->>>>>>> Stashed changes
+
   echo "<thead>
           <tr>
           <th scope='col'>Agent ID</th>

@@ -4,11 +4,9 @@ isLogin();
 $user = new user();
 isAdmin($user->data()->groups);
 $viewtable = new viewtable();
-<<<<<<< Updated upstream
 $accounts = new accounts();
-=======
 
->>>>>>> Stashed changes
+
 // $approvedstatus = new approvedstatus();
 ?>
 
@@ -23,11 +21,9 @@ $accounts = new accounts();
         <title>CEU CAVEPortal</title>
         <link rel="icon" type="image/x-icon" href="assets/logo_icon.ico" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-<<<<<<< Updated upstream
         <link href="resource/css/clientdash.css" rel="stylesheet" />
-=======
         <link href="resource/css/admindash.css" rel="stylesheet" />
->>>>>>> Stashed changes
+
         <link href="vendor/css/all.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="vendor/img/favicon.png" rel="icon">
@@ -39,10 +35,6 @@ $accounts = new accounts();
         <link href="vendor/css/quill.snow.css" rel="stylesheet">
         <link href="vendor/css/quill.bubble.css" rel="stylesheet">
         <link href="vendor/css/remixicon.css" rel="stylesheet">
-<<<<<<< Updated upstream
-        <link href="resource/css/clientdash.css" rel="stylesheet">
-=======
->>>>>>> Stashed changes
         <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
         <link href="vendor/css/style.css" rel="stylesheet">
         <script src="vendor/js/jquery.js"></script>
