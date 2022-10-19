@@ -4,6 +4,8 @@ isLogin();
 $user = new user();
 isClient($user->data()->groups);
 $viewtable = new viewtable();
+$agentID = $user->data()->id;
+
 ?>
 
 <!DOCTYPE html>
@@ -36,15 +38,17 @@ $viewtable = new viewtable();
         <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
         <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
         <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
         
 
 </head>
 <body class="d-flex flex-column h-100">
-    <header id="header" class="header fixed-top d-flex align-items-center">
-        <div class="d-flex align-items-center justify-content-between"> <a href="clientdash.phpt" class="logo d-flex align-items-center"> <img src="resource/img/CAVElogo.png" alt=""> <span class="d-none d-lg-block">Client</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
+    <header id="header" class="header fixed-top d-flex align-items-center" data-aos="fade-right" data-aos-duration="1000">
+        <div class="d-flex align-items-center justify-content-between"> <a href="clientdash.php" class="logo d-flex align-items-center"> <img src="resource/img/CAVElogo.png" alt=""> <span class="d-none d-lg-block">Client</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
     </header>
-    <aside id="sidebar" class="sidebar">
+    
+    <aside id="sidebar" class="sidebar" data-aos="fade-right" data-aos-duration="1000">
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item"> <a class="nav-link " href="clientdash.php"> <i class="bi bi-grid"></i><span>Dashboard</span></a></li>
             <li class="nav-heading">Pages</li>
@@ -53,7 +57,7 @@ $viewtable = new viewtable();
         </ul>
     </aside>
     <main id="main" class="main">
-        <div class="pagtitle">
+        <div class="pagtitle" data-aos="fade-right" data-aos-duration="1000">
             <h1>Dashboard</h1>
             <nav>
                <ol class="breadcrumb">
@@ -61,8 +65,8 @@ $viewtable = new viewtable();
                   <li class="breadcrumb-item active">Dashboard</li>
                </ol>
             </nav>
-        </div>
-        <section class="section dashboard">
+     
+        <section class="section dashboard" data-aos="fade-right" data-aos-duration="1000">
             <div class="row">
                <div class="col-lg-12">
                   <div class="row">
@@ -79,84 +83,19 @@ $viewtable = new viewtable();
                                  <li><a class="dropdown-item" href="#">This Year</a></li>
                               </ul>
                            </div>
+                           
                            <div class="card-body">
                               <h5 class="card-title">Recent Applications <span>| Today</span></h5>
                               <a href="regform.php" type="btn" class="reqbtn"><i class="bi bi-person-plus-fill"></i>&nbsp&nbsp<span class="">Request New Verification</span></a>
-                              <?php $viewtable->viewData_clients()?>
+                              <?php 
+                              
+                              $viewtable->viewData_clients();
+                              ?>
                               
                            </div>
                         </div>
                      </div>
-                     <div class="col-12">
-                        <div class="card">
-                           <div class="filter">
-                              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                 <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                 </li>
-                                 <li><a class="dropdown-item" href="#">Today</a></li>
-                                 <li><a class="dropdown-item" href="#">This Month</a></li>
-                                 <li><a class="dropdown-item" href="#">This Year</a></li>
-                              </ul>
-                           </div>
-                           <div class="card-body">
-                              <h5 class="card-title">Reports <span>/Today</span></h5>
-                              <div id="reportsChart"></div>
-                              <script>document.addEventListener("DOMContentLoaded", () => {
-                                 new ApexCharts(document.querySelector("#reportsChart"), {
-                                    series: [{
-                                       name: 'Manila',
-                                       data: [31, 40, 28, 51, 42, 82, 56],
-                                    }, {
-                                       name: 'Makati',
-                                       data: [11, 32, 45, 32, 34, 52, 41]
-                                    }, {
-                                       name: 'Malolos',
-                                       data: [15, 11, 32, 18, 9, 24, 11]
-                                    }],
-                                    chart: {
-                                       height: 350,
-                                       type: 'area',
-                                       toolbar: {
-                                          show: false
-                                       },
-                                    },
-                                    markers: {
-                                       size: 4
-                                    },
-                                    colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                                    fill: {
-                                       type: "gradient",
-                                       gradient: {
-                                          shadeIntensity: 1,
-                                          opacityFrom: 0.3,
-                                          opacityTo: 0.4,
-                                          stops: [0, 90, 100]
-                                       }
-                                    },
-                                    dataLabels: {
-                                       enabled: false
-                                    },
-                                    stroke: {
-                                       curve: 'smooth',
-                                       width: 2
-                                    },
-                                    xaxis: {
-                                       type: 'datetime',
-                                       categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                                    },
-                                    tooltip: {
-                                       x: {
-                                          format: 'dd/MM/yy HH:mm'
-                                       },
-                                    }
-                                 }).render();
-                                 });
-                              </script> 
-                           </div>
-                        </div>
-                     </div>
+                     
                      <div class="col-12">
                         <div class="card top-selling overflow-auto">
                            <div class="filter">
@@ -192,9 +131,9 @@ $viewtable = new viewtable();
         
 
         <!-- Footer-->
-        <footer id="footer" class="footer">
-         <div class="copyright"> &copy; Copyright <strong><span>Compnay Name</span></strong>. All Rights Reserved</div>
-         <div class="credits"> with love <a href="https://freeetemplates.com/">FreeeTemplates</a></div>
+        <footer id="footer" class="footer fixed">
+         <div class="copyright"> &copy; Copyright <strong>Centro Escolar University</span></strong>. All Rights Reserved</div>
+         <div class="credits">Manila | Malolos| Makati</div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         
@@ -211,7 +150,9 @@ $viewtable = new viewtable();
          <script src="vendor/js/tinymce.min.js"></script>
          <script src="vendor/js/validate.js"></script>
          <script src="vendor/js/main.js"></script> 
-        
-      
+         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+         <script>
+         AOS.init();
+         </script>
 </body>
 </html>

@@ -1,6 +1,8 @@
+/* Google Poppins Font CDN Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        
 @charset "UTF-8";
-    /*!
+/*!
 * Start Bootstrap - Modern Business v5.0.6 (https://startbootstrap.com/template-overviews/modern-business)
 * Copyright 2013-2022 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-modern-business/blob/master/LICENSE)
@@ -10,7 +12,7 @@
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */ 
+ */
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -66,66 +68,77 @@
 }
 
 :root{
-    --primary-font-family: 'Poppins', sans-serif;
-    --light-white:#f5f8fa;
-    --gray:#5e6278;
-    --gray-1:#e3e3e3;
+  --primary-font-family: 'Poppins', sans-serif;
+  --light-white:#f5f8fa;
+  --gray:#5e6278;
+  --gray-1:#e3e3e3;
 }
 body{
-    font-family:var(--primary-font-family);
-    font-size: 14px;
+  font-family:var(--primary-font-family);
+  font-size: 14px;
 } 
 
+/* Main CSS */ 
+
+
 .wrapper{
-    padding:0 0 10px;
-    background-image:url('resource/img/bg.png');
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-attachment: fixed;
-    background-size:contain;
-    min-height: 100%;
-    margin-bottom: -70px;
+  padding:0 0 30px;
+  background-image:url('resource/img/bg.png');
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-attachment: fixed;
+  background-size:contain;
+  min-height: 100%;
+}
+.wrapper .text-header {
+  color: #f04e98;
+}
+.wrapper .title-wrapper{
+  color: #251f70;
+  font-weight:600;
 }
 .wrapper .logo img{
-    max-width:40%;
+  max-width:30%;
 }
 .wrapper input{
-    background-color: var(--light-white);
-    border-color: var(--light-white);
-    color: var(--gray); 
+  background-color: var(--light-white);
+  border-color: var(--light-white);
+  color: var(--gray); 
 }
 .wrapper input:focus{ 
-    box-shadow: none;
+  box-shadow: none;
+}
+.wrapper .submit_btn{
+  padding:10px;
+  font-weight: 500;
+  background-color: #f04e98;
+  color: #f5f5f5;
+  border-radius: 15px;
+  border-color: transparent;
+  font-weight: 600;
+}
+.wrapper .submit_btn:hover{
+  background-color: #251f70;
+  color: #f5f5f5;
+  transition: 0.3s ease;
 }
 
-.wrapper .submit_btn{
-    padding:15px;
-    font-weight: 500;
-    margin:0 auto;
-    float: right;  
-    font-size:20px;
-    margin-bottom: -20px;
-}
 .wrapper .login_with{
-    padding:15px;
-    font-size: 15px;
-    font-weight: 500;
-    transition:0.3s ease-in-out;
+  padding:15px;
+  font-size: 15px;
+  font-weight: 500;
+  transition:0.3s ease-in-out;
 }
 .wrapper .submit_btn:focus,
 .wrapper .login_with:focus{
-    box-shadow: none;
+  box-shadow: none;
 }
 .wrapper .login_with:hover{
-    background-color:var(--gray-1);
-    border-color:var(--gray-1);
+  background-color:var(--gray-1);
+  border-color:var(--gray-1);
 }
 .wrapper .login_with img{
-    max-width: 8%;
-}
-
-select option{
-  padding-bottom: 5px;
+  max-width: 8%;
 }
 
 *,
@@ -151,19 +164,6 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-.form-group select {
-  margin-bottom:10px;
-}
-
-.form-group h5 {
-  font-weight: 700;
-}
-
-
-.form-group .diploma-title {
-  font-size: 1rem;
 }
 
 hr {
@@ -269,6 +269,7 @@ address {
 ol,
 ul {
   padding-left: 2rem;
+  word-spacing: 2px;
 }
 
 ol,
@@ -426,7 +427,6 @@ th {
 
 label {
   display: inline-block;
-
 }
 
 button {
@@ -2263,6 +2263,96 @@ svg path:hover{
     -webkit-overflow-scrolling: touch;
   }
 }
+.form-label {
+  margin-bottom: 0.5rem;
+}
+/* eto lang yung dinagdag ko para sa register */
+.header-text {
+  font-size: 30px;
+  color: #f5f5f5;
+  font-weight: 700;
+  margin-top: 50px;
+  font-family: "Arial";
+}
+
+.form-group {
+  margin-top: 30px;
+  opacity:0.9;
+  float: left;
+  
+}
+
+.form-group .form-control {
+  border: none;
+  outline: none;
+  padding: 25px 20px 5px;
+  border-radius: 15px;
+  font-size: 16px;
+  color:#151515;
+  font-weight: bold;
+  background-color: #f5f5f5;
+  border: 2px solid #a8a8a8;
+}
+
+label {
+  font-size: 14px;
+  position: absolute;
+  font-weight: 600;
+  color:#151515;
+  padding: 0 10px;
+}
+
+.checkbox-title{
+  font-size: 13px;
+  color: #f5f5f5;
+  margin-bottom: 40px;
+  padding-left: 5px;
+  font-family: "Arial";
+  font-weight: 500;
+  padding-top: 15px;
+}
+.checkbox-agreement {
+  margin-left: 10px;
+}
+
+.form-group .btn{
+  width: 550px;
+  padding: 10px;
+  border-radius: 100px;
+  background-color: #f04e98;
+  color: #151515;
+  font-weight: 600;
+  font-size: 15px;
+}
+/* need toh para malagay sa taas ng input yung label */
+.form-group label {
+  transform: translate(0, 4px) scale(.75);
+}
+
+.icon {
+  color: #818181;
+  position:absolute;
+  font-size: 22px;
+  margin: 1.5rem 1rem 1.5rem 19rem;
+  opacity: 0.7;
+}
+
+.fa-envelope {
+  color: #818181;
+  position:absolute;
+  font-size: 22px;
+  margin: 1.5rem 1rem 1.5rem 42.5rem;
+  opacity: 0.7; 
+}
+.header-title {
+  color: #cccccc;
+}
+.login-header a {
+  color: #FFA1C9;
+  font-weight: 600;
+  padding-left: 5px;
+}
+/* dito tapos neto */
 
 .col-form-label {
   padding-top: calc(0.375rem + 1px);
@@ -2284,40 +2374,19 @@ svg path:hover{
   font-size: 0.875rem;
 }
 
-.form-group h3 {
-    font-weight: 700;
+.form-text {
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #6c757d;
 }
-
-.form-floating .form-control {
-    font-size: 1.2rem;
-    border-radius: 10px;
-    box-shadow: 8px 9px 24px -18px rgba(0,0,0,0.4);
-    -webkit-box-shadow: 8px 9px 24px -18px rgba(0,0,0,0.4);
-    -moz-box-shadow: 8px 9px 24px -18px rgba(0,0,0,0.4);
-}
-
-.form-group input {
-  
-}
-
-.container {
-  max-width: 70%;
-}
-
-.icon {
-  color: #151515;
-  position:absolute;
-  font-size: 22px;
-  opacity: 0.2;
-}
-
 
 .form-control {
   display: block;
   width: 100%;
-  padding: 0.375rem 0.75rem;    
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 2.5;
+  line-height: 1.5;
   color: #212529;
   background-color: #fff;
   background-clip: padding-box;
@@ -2681,6 +2750,10 @@ textarea.form-control-lg {
 .form-check-inline {
   display: inline-block;
   margin-right: 1rem;
+}
+
+.btn-text-submit{
+  color: #f5f5f5;
 }
 
 .btn-check {
@@ -3117,35 +3190,9 @@ textarea.form-control-lg {
   z-index: 3;
 }
 
-.text-muted {
-    font-size: 10px;
-    letter-spacing: 0.5px;
-    opacity: 0.9;
-}
-
-.submit_btn {
-    font-size: 1.5rem;
-    background-color: #251f70;
-    color: #f5f5f5;
-    margin: 0 auto;
-    border-radius: 15px;
-    border-color: transparent;
-    font-weight: 600;
-    margin-bottom: -20px;
-    opacity: 0.9;
-}
-
-.submit_btn:hover {
-  background-color:#f04e98;
-  color: #151515;
-  transition: 0.3s ease;
-}
-
-
 .btn {
-  width: 500px;
-  margin: 0 auto;
-  font-weight: 700;
+  display: inline-block;
+  font-weight: 400;
   line-height: 1.5;
   color: #212529;
   text-align: center;
@@ -3182,13 +3229,13 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: #f04e98 ;
+  border-color: #f04e98 ;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #0b5ed7;
-  border-color: #0a58ca;
+  background-color: #251f70;
+  border-color: #251f70;
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
@@ -4092,7 +4139,7 @@ textarea.form-control-lg {
 }
 
 .nav-link {
-  display: block;
+  display: inline-block;
   padding: 0.5rem 1rem;
   color: #0d6efd;
   text-decoration: none;
@@ -6697,6 +6744,37 @@ textarea.form-control-lg {
   top: 0;
   z-index: 1020;
 }
+/* ralph dito ka mag eedit for navbar */
+@media (max-width: 575px) {
+  .sticky-sm-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+  }
+  .logo {
+    margin-right: 19rem;
+    margin-left: -40px;
+    width: 160px;
+  }
+  .nav-container {
+    margin-right: -10px;
+  }
+
+  .navbar-collapse {
+    margin-left: -40px;
+  }
+  .form-group .btn {
+    width: 38.5rem;
+    margin-bottom: 30px;
+  }
+  .icon {
+    margin: 1.5rem 1rem 1.5rem 35rem;
+  }
+  .fa-envelope {
+    margin: 1.5rem 1rem 1.5rem 35rem;
+  }
+}
 
 @media (min-width: 576px) {
   .sticky-sm-top {
@@ -6705,7 +6783,30 @@ textarea.form-control-lg {
     top: 0;
     z-index: 1020;
   }
+  .logo {
+    margin-right: 28.5rem;
+    margin-left: -100px;
+    width: 160px;
+  }
+  .nav-container {
+    margin-right: -10px;
+  }
+
+  .navbar-collapse {
+    margin-left: -90px;
+  }
+  .form-group .btn {
+    width: 43rem;
+    margin-bottom: 30px;
+  }
+  .icon {
+    margin: 1.5rem 1rem 1.5rem 40rem;
+  }
+  .fa-envelope {
+    margin: 1.5rem 1rem 1.5rem 40rem;
+  }
 }
+
 @media (min-width: 768px) {
   .sticky-md-top {
     position: -webkit-sticky;
@@ -6713,7 +6814,31 @@ textarea.form-control-lg {
     top: 0;
     z-index: 1020;
   }
+  .logo {
+    margin-right: 40rem;
+    margin-left: -120px;
+    width:160px;
+  }
+  .nav-container {
+    margin-right: -10px;
+  }
+
+  .navbar-collapse {
+    margin-left: -110px;
+  }
+  .form-group .btn {
+    width: 58rem;
+  }
+  .icon {
+    margin: 1.5rem 1rem 1.5rem 54rem;
+  }
+  .fa-envelope {
+    margin: 1.5rem 1rem 1.5rem 54rem;
+  }
 }
+
+
+
 @media (min-width: 992px) {
   .sticky-lg-top {
     position: -webkit-sticky;
@@ -6721,13 +6846,70 @@ textarea.form-control-lg {
     top: 0;
     z-index: 1020;
   }
+  .logo {
+    margin-left: -80px;
+    margin-right: -20px;
+    width: 300px;
+  }
+  .nav-container {
+    margin-right: -20px;
+  }
+  .icon {
+    font-size: 22px;
+  margin: 1.5rem 1rem 1.5rem 15rem;
+  }
+  .fa-envelope {
+    color: #818181;
+    position:absolute;
+    font-size: 22px;
+    margin: 1.5rem 1rem 1.5rem 35rem;
+    opacity: 0.7; 
+  }
+  .form-group .btn {
+    width: 455px;
+  }
+  .checkbox-title {
+    width: 20px;
+  }
+  
 }
+
+
 @media (min-width: 1200px) {
   .sticky-xl-top {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1020;
+  }
+  .logo {
+    margin-left: -120px;
+    width:320px;
+  }
+  .nav-container {
+    margin-right: -20px;
+  }
+  .icon {
+    color: #818181;
+    position:absolute;
+    font-size: 22px;
+    margin: 1.5rem 1rem 1.5rem 19rem;
+    opacity: 0.7;
+  }
+  .fa-envelope {
+    color: #818181;
+    position:absolute;
+    font-size: 22px;
+    margin: 1.5rem 1rem 1.5rem 42.5rem;
+    opacity: 0.7; 
+  }
+  .form-group .btn{
+    width: 550px;
+    padding: 10px;
+    border-radius: 100px;
+    color: #151515;
+    font-weight: 600;
+    font-size: 15px;
   }
 }
 @media (min-width: 1400px) {
@@ -6737,7 +6919,12 @@ textarea.form-control-lg {
     top: 0;
     z-index: 1020;
   }
+  
+  .nav-container {
+    margin-right: -40px;
+  }
 }
+/* end nung pag eedit mo sa navbar */
 .hstack {
   display: flex;
   flex-direction: row;
@@ -11488,6 +11675,10 @@ body {
   color: #251f70;
   background-color: #f1f2f2;
   font: 16px/26px "Raleway", sans-serif; }
+/* palagay toh */
+header {
+    min-height: 100vh;   
+}
 
 .form-wrap {
   border-radius: 30px;
@@ -11560,8 +11751,8 @@ body {
       content: '';
       position: absolute;
       border: 1px solid #CFCFCF;
-      width: 17px;
-      height: 17px;
+      width: 17rem;
+      height: 17rem;
       top: 0px;
       left: -14px; }
     .form-wrap form label[for]:after {

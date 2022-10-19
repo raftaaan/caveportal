@@ -2,6 +2,8 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init.php';
 isLogin();
 $view = new view;
+$user = new user();
+
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +16,7 @@ $view = new view;
         <title>CEU CAVEPortal</title>
         <!-- <link rel="icon" type="image/x-icon" href="assets/logo_icon.ico" /> -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="resource/img/tab-icon.png">
         <link href="resource/css/regform.css" rel="stylesheet" />
         <script src="https://kit.fontawesome.com/b04d2a2a76.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -27,7 +30,7 @@ $view = new view;
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-aos="fade-down" data-aos-duration="1500">
         <div class="container px-5">
-          <a class="navbar-brand">
+          <a class="navbar-brand" href="clientdash.php">
             <img src="resource/img/CAVElogo-white.png" alt="" width="150" height="65" class="d-inline-block align-top"/>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -51,7 +54,6 @@ $view = new view;
           <?php 
             if(!empty($_POST)){
               $insert = new insert($_POST['firstName'],$_POST['middleName'],$_POST['lastName'],$_POST['degree'], $_POST['yearsGrad'],$_FILES['diploma'], $_FILES['consent']);
-              $insert->insertVerification();
               }
               ?>
             <form action="" method="POST" class="rounded bg-white shadow py-4 px-4" enctype="multipart/form-data">
@@ -65,35 +67,42 @@ $view = new view;
                   <h5 class="text-start mt-2 mb-3">Basic Information <br /><small class="text-muted">for student with ñ in their name please input Uppercase Ñ or N instead.</small></h5>
                 </div>
                 <div class="form-floating col-md-4 mb-2">
-                  <input type="text" class="form-control form-control-sm" id="floatingInput" value="" name="firstName" placeholder="First Name" autocomplete="no" pattern="[a-zA-Z\s]*$" required>
+                  <input type="text" class="form-control form-control-sm" id="floatingInput" value="" name="firstName" placeholder="First Name" autocomplete="no" pattern="[a-zA-Z\s]*$" >
                   <label for="floatingInput">First Name</label>
                 </div>
 
                 <div class="form-floating col-md-4 mb-2">
-                  <input type="text" class="form-control form-control-sm" id="floatingInput"  value="" name="middleName" placeholder="Middle Name" autocomplete="no" pattern="[a-zA-Z\s]*$" required>
+                  <input type="text" class="form-control form-control-sm" id="floatingInput"  value="" name="middleName" placeholder="Middle Name" autocomplete="no" pattern="[a-zA-Z\s]*$" >
                   <label for="floatingInput">Middle Name</label>
                 </div>
                 
                 <div class="form-floating col-md-4">
-                    <input type="text" class="form-control form-control-sm" id="floatingInput"  value="" name="lastName" placeholder="Last Name"  autocomplete="no" pattern="[a-zA-Z\s]*$" required>
+                    <input type="text" class="form-control form-control-sm" id="floatingInput"  value="" name="lastName" placeholder="Last Name"  autocomplete="no" pattern="[a-zA-Z\s]*$" >
                     <label for="floatingInput">Last Name</label>
                     <small class="text-muted"></b> </small>
                   </div>
               </div>
               
               <div class="row border-top py-2">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                   <label for="degree">Course/s</label>
                   <select id="degree" name="degree" class="selectpicker form-select" data-live-search="true" required>
-                    <option selected>---- Select Course ----</option>
-                    <option value=""><?php $view->courses();?></option>
+                    <option selected disabled>---- Select Course ----</option>
+                    <option value="<?php $view->courses();?>"></option>
                   </select>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                   <label for="yearsGrad" >Year Graduated</label>
-                  <select name="yearsGrad" id="yearsGrad" class="selectpicker form-select" data-live-search="true">
-                    <option value="">--- Select Year ---</option>
-                    <option value=""><?php $view->years();?></option>
+                  <select name="yearsGrad" id="yearsGrad" class="selectpicker form-select" data-live-search="true" required>
+                  <option selected disabled>---- Select Year ----</option>
+                    <option value="<?php $view->years();?>"></option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="yearsGrad" >Country</label>
+                  <select name="yearsGrad" id="yearsGrad" class="selectpicker form-select" data-live-search="true" required>
+                  <option selected disabled>---- Select Country ----</option>
+                    <option value="<?php $view->countries();?>"></option>
                   </select>
                 </div>
               </div>

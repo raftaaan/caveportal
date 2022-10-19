@@ -2,12 +2,13 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init.php';
 require_once 'config.php';
 
+
 class insert extends config{
 
-    public $studentID, $firstName, $middleName, $lastName, $degree,$yearsGrad, $diploma, $consent, $certificate, $letterForm;
+    public $studentID, $firstName, $middleName, $lastName, $degree, $yearsGrad, $diploma, $consent, $certificate, $letterForm;
 
-    function __construct($firstName=null, $middleName=null, $lastName=null, $degree=null, $yearsGrad = null, $diploma=null, $consent=null){
-
+    function __construct($firstName=null, $middleName=null, $lastName=null, $degree=null, $yearsGrad=null, $diploma=null, $consent=null){
+        
         $this->firstName = $firstName;
         $this->middleName = $middleName;
         $this->lastName = $lastName;
@@ -18,23 +19,24 @@ class insert extends config{
         $this->consent = $consent;
         $form = pathinfo($this->consent['name'], PATHINFO_EXTENSION);
 
-        
         if($this->firstName == ""){
-            alertMess("Entering first name is required!");
+            $message = "First Name is required!";
         }else if(!ctype_alpha(str_replace(' ', '', $this->firstName))){
-            alertMess("Entered first name is not applicable!");
-        }else if($this->middleName == ""){
-            alertMess("Entering middle name is required!");
+            $message = "First Name is not applicable!";
         }else if(!ctype_alpha(str_replace(' ', '', $this->middleName))){
-            alertMess("Entered middle name is not applicable!");
+            $message = "Middle Name is not applicable!";
         }else if($this->lastName == ""){
-            alertMess("Entering last name is required!");
+            $message = "Last Name is required!";
         }else if(!ctype_alpha(str_replace(' ', '', $this->lastName))){
-            alertMess("Entered last name is not applicable!");
-        }else if($ext !== 'pdf' && $ext !== ''){
-            alertMess("Diploma must be a pdf file!");  
-        }else if($form !== 'pdf' && $form !== ''){
-            alertMess("Consent Letter must be a pdf file!");  
+            $message = "Last Name is not applicable!";
+        }else if(empty($this->degree)){
+            $message = "Selecting Course is required!!";
+        }else if(empty($this->yearsGrad)){
+            $message = "Please select the year the alumna/alumnus graduated.";
+        }else if($ext !== "pdf" || $ext == ""){
+            $message = "Please upload the diploma of the alumna/alumnus.";  
+        }else if($form !== "pdf" || $form == ""){
+            $message = "Must upload a pdf file!";  
         }else{
             $ext = strtolower(pathinfo($this->diploma['name'], PATHINFO_EXTENSION));
             $this->diploma['name'] = $this->lastName.".".$ext;
@@ -51,27 +53,31 @@ class insert extends config{
             if ($ext == ''){
                 $this->certificate = '';
             }
-
+    
             if ($form == '') {
                 $this->letterForm = '';
             }
+            $this->insertVerification();
+
         }
-        
-    }
-    public function alertMess($message){
         echo "<script>alert('$message');</script>";
     }
+
     public function insertVerification(){
+        $user = new user();
+        $agentID = $user->data()->id;
         $config = new config();
         $con= $config->con();
-        $sql = "INSERT INTO `tbl_client_user`(`firstName`,`middleName`, `lastName`,`degree`,`yearsGrad`,`diploma`,`consentForm`) VALUES ('$this->firstName','$this->middleName','$this->lastName','$this->degree','$this->yearsGrad','$this->certificate', '$this->letterForm')";
+        $sql = "INSERT INTO `tbl_client_user`(`agentID`, `firstName`,`middleName`, `lastName`,`degree`,`yearsGrad`,`diploma`,`consentForm`) VALUES ('$agentID','$this->firstName','$this->middleName','$this->lastName','$this->degree','$this->yearsGrad','$this->certificate', '$this->letterForm')";
         $data = $con->prepare($sql);
         
         if($data->execute()) {
-            alertMess("Application Registered Successfully");
+            $message = "Application Registered Successfully";
         } else {
-            alertMess("Application Registered Unsuccessful");
+            $message = "Application Registered Unsuccessful";
         }
+        echo "<script>alert('$message');</script>";
     }
-
 }
+
+

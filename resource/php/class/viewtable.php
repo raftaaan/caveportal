@@ -73,12 +73,15 @@ public function viewApproveTable(){
 
 //for clientdash
 public function viewData_clients(){
+  $user = new user();
+  $agentID = $user->data()->id;
   $con = $this->con();
-  $sql = "SELECT * FROM `tbl_client_user`";
+  $sql = "SELECT * FROM `tbl_client_user` WHERE `agentID` = $agentID";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>Completed Tasks</h3>";
+  echo "<div class='table-responsive'>";
   echo "<table id='candtable' class='table table-borderless  table-hover shadow' width='100%'>";
   echo "<thead>";
   echo "<tr>";
@@ -114,36 +117,39 @@ public function viewApprovedData(){
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>APPROVED APPLICATIONS</h3>";
-  echo "<table id='candtable' class='table table-dark table-stripe table-sm'>";
+  echo "<div class='table-responsive'>";
+  echo "<table id='candtable' class='table table-borderless shadow' width='100%'>";
   echo "<thead>
           <tr>
-          <th>Student ID</th>
-          <th>Agent ID</th>
-          <th>First Name</th>
-          <th>Middle Name</th>
-          <th>Last Name</th>
-          <th>Degree</th>
-          <th>Date Added</th>
-          <th>Consent Form</th>
-          <th>Diploma</th>
-          <th>Date Completed</th>
-          <th>Status</th>
-          <th>Remarks</th>
-          <th>Admin Actions</th>
+          <th scope='col'>Agent ID</th>
+          <th scope='col'>First Name</th>
+          <th scope='col'>Middle Name</th>
+          <th scope='col'>Last Name</th>
+          <th scope='col'>Degree</th>
+          <th scope='col'>Date Added</th>
+          <th scope='col'>Consent Form</th>
+          <th scope='col'>Diploma</th>
+          <th scope='col'>Date Completed</th>
+          <th scope='col'>Status</th>
+          <th scope='col'>Remarks</th>
+          <th scope='col'>Actions</th>
 
           </tr>
   </thead><tbody>";
   foreach ($result as $data) {
+    $diploma = "$data[diploma]";
+    $consent = "$data[consentForm]";
+    $file = basename($consent, $diploma);
+
       echo "<tr>";
-      echo "<td class='d-none d-sm-table-cell'>$data[studentID]</td>";
       echo "<td>$data[agentID]</td>";
       echo "<td>$data[firstName]</td>";
       echo "<td>$data[middleName]</td>";
       echo "<td>$data[lastName]</td>";
       echo "<td>$data[degree]</td>";
       echo "<td>$data[date_added]</td>";
-      echo "<td>$data[consentForm]</td>";
-      echo "<td>$data[diploma]</td>";
+      echo "<td><a href='$data[consentForm]' target='_blank'>View</a><br><a href='$data[consentForm]' download>Download</a></td>";
+      echo "<td><a href='$data[diploma]' target='_blank'>View</a><br><a href='$data[diploma]' download>Download</a></td>";
       echo "<td>$data[date_completed]</td>";
       echo "<td>$data[status]</td>";
       echo "<td>      </td>";
@@ -166,35 +172,34 @@ public function viewOnHoldData(){
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>ON-HOLD APPLICATIONS</h3>";
-  echo "<table id='onHoldtable' class='table table-dark table-stripe table-sm'>";
+  echo "<div class='table-responsive'>";
+  echo "<table id='onHoldtable' class='table table-borderless  table-hover shadow' width='100%'>";
   echo "<thead>
           <tr>
-          <th>Student ID</th>
-          <th>Agent ID</th>
-          <th>First Name</th>
-          <th>Middle Name</th>
-          <th>Last Name</th>
-          <th>Degree</th>
-          <th>Date Added</th>
-          <th>Consent Form</th>
-          <th>Diploma</th>
-          <th>Status</th>
-          <th>Remarks</th>
-          <th>Admin Actions</th>
+          <th scope='col'>Agent ID</th>
+          <th scope='col'>First Name</th>
+          <th scope='col'>Middle Name</th>
+          <th scope='col'>Last Name</th>
+          <th scope='col'>Degree</th>
+          <th scope='col'>Date Added</th>
+          <th scope='col'>Consent Form</th>
+          <th scope='col'>Diploma</th>
+          <th scope='col'>Status</th>
+          <th scope='col'>Remarks</th>
+          <th scope='col'>Actions</th>
 
           </tr>
   </thead><tbody>";
   foreach ($result as $data) {
       echo "<tr>";
-      echo "<td>$data[studentID]</td>";
       echo "<td>$data[agentID]</td>";
       echo "<td>$data[firstName]</td>";
       echo "<td>$data[middleName]</td>";
       echo "<td>$data[lastName]</td>";
       echo "<td>$data[degree]</td>";
       echo "<td>$data[date_added]</td>";
-      echo "<td>$data[consentForm]</td>";
-      echo "<td>$data[diploma]</td>";
+      echo "<td><a href='$data[consentForm]' target='_blank'>View</a><br><a href='$data[consentForm]' download>Download</a></td>";
+      echo "<td><a href='$data[diploma]' target='_blank'>View</a><br><a href='$data[diploma]' download>Download</a></td>";
       echo "<td>$data[status]</td>";
       echo "<td>      </td>";
       echo "<td>
@@ -214,35 +219,34 @@ public function viewPendingData(){
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>PENDING APPLICATIONS</h3>";
-  echo "<table id='pendingtable' class='table table-dark table-stripe table-sm'>";
+  echo "<div class='table-responsive'>";
+  echo "<table id='pendingtable' class='table table-borderless  table-hover shadow' width='100%'>";
   echo "<thead>
           <tr>
-          <th>Student ID</th>
-          <th>Agent ID</th>
-          <th>First Name</th>
-          <th>Middle Name</th>
-          <th>Last Name</th>
-          <th>Degree</th>
-          <th>Date Added</th>
-          <th>Consent Form</th>
-          <th>Diploma</th>
-          <th>Status</th>
-          <th>Remarks</th>
-          <th>Admin Actions</th>
+          <th scope='col'>Agent ID</th>
+          <th scope='col'>First Name</th>
+          <th scope='col'>Middle Name</th>
+          <th scope='col'>Last Name</th>
+          <th scope='col'>Degree</th>
+          <th scope='col'>Date Added</th>
+          <th scope='col'>Consent Form</th>
+          <th scope='col'>Diploma</th>
+          <th scope='col'>Status</th>
+          <th scope='col'>Remarks</th>
+          <th scope='col'>Admin Actions</th>
 
           </tr>
   </thead><tbody>";
   foreach ($result as $data) {
       echo "<tr>";
-      echo "<td>$data[studentID]</td>";
       echo "<td>$data[agentID]</td>";
       echo "<td>$data[firstName]</td>";
       echo "<td>$data[middleName]</td>";
       echo "<td>$data[lastName]</td>";
       echo "<td>$data[degree]</td>";
       echo "<td>$data[date_added]</td>";
-      echo "<td>$data[consentForm]</td>";
-      echo "<td>$data[diploma]</td>";
+      echo "<td><a href='$data[consentForm]' target='_blank'>View</a><br><a href='$data[consentForm]' download>Download</a></td>";
+      echo "<td><a href='$data[diploma]' target='_blank'>View</a><br><a href='$data[diploma]' download>Download</a></td>";
       echo "<td>$data[status]</td>";
       echo "<td>      </td>";
       echo "<td>   
@@ -263,36 +267,35 @@ public function viewDeniedData(){
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>DENIED APPLICATIONS</h3>";
-  echo "<table id='deniedtable' class='table table-dark table-stripe table-sm'>";
+  echo "<div class='table-responsive'>";
+  echo "<table id='deniedtable' class='table table-borderless  table-hover shadow' width='100%'>";
   echo "<thead>
           <tr>
-          <th>Student ID</th>
-          <th>Agent ID</th>
-          <th>First Name</th>
-          <th>Middle Name</th>
-          <th>Last Name</th>
-          <th>Degree</th>
-          <th>Date Added</th>
-          <th>Consent Form</th>
-          <th>Diploma</th>
-          <th>Date Completed</th>
-          <th>Status</th>
-          <th>Remarks</th>
-          <th>Admin Actions</th>
+          <th scope='col'>Agent ID</th>
+          <th scope='col'>First Name</th>
+          <th scope='col'>Middle Name</th>
+          <th scope='col'>Last Name</th>
+          <th scope='col'>Degree</th>
+          <th scope='col'>Date Added</th>
+          <th scope='col'>Consent Form</th>
+          <th scope='col'>Diploma</th>
+          <th scope='col'>Date Completed</th>
+          <th scope='col'>Status</th>
+          <th scope='col'>Remarks</th>
+          <th scope='col'>Actions</th>
 
           </tr>
   </thead><tbody>";
   foreach ($result as $data) {
       echo "<tr>";
-      echo "<td>$data[studentID]</td>";
       echo "<td>$data[agentID]</td>";
       echo "<td>$data[firstName]</td>";
       echo "<td>$data[middleName]</td>";
       echo "<td>$data[lastName]</td>";
       echo "<td>$data[degree]</td>";
       echo "<td>$data[date_added]</td>";
-      echo "<td>$data[consentForm]</td>";
-      echo "<td>$data[diploma]</td>";
+      echo "<td><a href='$data[consentForm]' target='_blank'>View</a><br><a href='$data[consentForm]' download>Download</a></td>";
+      echo "<td><a href='$data[diploma]' target='_blank'>View</a><br><a href='$data[diploma]' download>Download</a></td>";
       echo "<td>$data[date_completed]</td>";
       echo "<td>$data[status]</td>";
       echo "<td>      </td>";

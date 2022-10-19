@@ -7,12 +7,12 @@ class view extends config{
         public function collegeSP2(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT * FROM `collegeschool`";
+            $sql = "SELECT * FROM `tbl_group`";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_OBJ);
                 foreach ($rows as $row) {
-                  echo '<option data-tokens=".'.$row->college_school.'." value="'.$row->college_school.'">'.$row->college_school.'</option>';
+                  echo '<option data-tokens=".'.$row->name.'." value="'.$row->name.'">'.$row->name.'</option>';
                   echo 'success';
                 }
         }
@@ -40,6 +40,18 @@ class view extends config{
                   echo '<option data-tokens=".'.$row->course_title.'." value="'.$row->course_title.'">'.$row->course_title.'</option>';
                 }
         }
+        public function countries(){
+          $config = new config;
+          $con = $config->con();
+          $sql = "SELECT * FROM `countries`";
+          $data = $con->prepare($sql);
+          $data ->execute();
+          $rows =$data->fetchAll(PDO::FETCH_OBJ);
+              foreach ($rows as $row) {
+                echo '<option data-tokens=".'.$row->country_name.'." value="'.$row->country_name.'">'.$row->country_name.'</option>';
+              }
+      }
+
 
         public function years() {
           for ($i = 1950; $i <= 2022; $i++) 

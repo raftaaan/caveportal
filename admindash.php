@@ -4,6 +4,7 @@ isLogin();
 $user = new user();
 isAdmin($user->data()->groups);
 $viewtable = new viewtable();
+$accounts = new accounts();
 // $approvedstatus = new approvedstatus();
 ?>
 
@@ -19,12 +20,20 @@ $viewtable = new viewtable();
         <link rel="icon" type="image/x-icon" href="assets/logo_icon.ico" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <link href="resource/css/clientdash.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css"  href="vendor/css/bootstrap.min.css">
         <link href="vendor/css/all.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;500&display=swap" rel="stylesheet">
+        <link href="vendor/img/favicon.png" rel="icon">
+        <link href="vendor/img/apple-touch-icon.png" rel="apple-touch-icon">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
+        <link href="vendor/css/bootstrap-icons.css" rel="stylesheet">
+        <link href="vendor/css/boxicons.min.css" rel="stylesheet">
+        <link href="vendor/css/quill.snow.css" rel="stylesheet">
+        <link href="vendor/css/quill.bubble.css" rel="stylesheet">
+        <link href="vendor/css/remixicon.css" rel="stylesheet">
+        <link href="resource/css/clientdash.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
+        <link href="vendor/css/style.css" rel="stylesheet">
         <script src="vendor/js/jquery.js"></script>
         <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jquery.dataTables.js"></script>
         <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
@@ -33,67 +42,129 @@ $viewtable = new viewtable();
 
 </head>
 <body class="d-flex flex-column h-100">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="http://malolos.ceu.edu.ph">
-                        <img src="resource/img/logo.png" alt="" width="230" height="65" class="d-inline-block align-top"/>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">My Account</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                    <li><a class="dropdown-item" href="logout.php">Log Out</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+<header id="header" class="header fixed-top d-flex align-items-center" data-aos="fade-right" data-aos-duration="1000">
+        <div class="d-flex align-items-center justify-content-between"> <a href="clientdash.php" class="logo d-flex align-items-center"> <img src="resource/img/CAVElogo.png" alt=""> <span class="d-none d-lg-block">Client</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
+    </header>
+    <aside id="sidebar" class="sidebar" data-aos="fade-right" data-aos-duration="1000">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item"> <a class="nav-link " href="clientdash.php"> <i class="bi bi-grid"></i><span>Dashboard</span></a></li>
+            <li class="nav-heading">Pages</li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="clientprofile.html"> <i class="bi bi-person"></i> <span>Profile</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="logout.php"> <i class="bi bi-box-arrow-in-right"></i> <span>Log out</span> </a></li>
+        </ul>
+    </aside>
+    <main id="main" class="main">
+        <div class="pagtitle" data-aos="fade-right" data-aos-duration="1000">
+            <h1>Dashboard</h1>
+            <nav>
+               <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="clientdash.php">Home</a></li>
+                  <li class="breadcrumb-item active">Dashboard</li>
+               </ol>
             </nav>
-        </main>
-<body>
-    <div class="container"><br>
-    <h1>Admin Dashboard</h1>
-</div>
+        </div>
+        <section class="section dashboard" data-aos="fade-right" data-aos-duration="1000">
+            <div class="row">
+               <div class="col-lg-12">
+                  <div class="row">
+                     <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                           <div class="filter">
+                              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                 <li class="dropdown-header text-start">
+                                    <h6>Filter</h6>
+                                 </li>
+                                 <li><a class="dropdown-item" href="#">Today</a></li>
+                                 <li><a class="dropdown-item" href="#">This Month</a></li>
+                                 <li><a class="dropdown-item" href="#">This Year</a></li>
+                              </ul>
+                           </div>
+                           <div class="card-body">
+                              <h5 class="card-title">Recent Applications <span>| Today</span></h5>
+                              <?php $viewtable->viewPendingData();?>
+                              
+                           </div>
+                           <div class="card-body">
+                              <?php $viewtable->viewOnHoldData();?>
+                              
+                           </div>
+                           <div class="card-body">
+                              <?php $viewtable->viewApprovedData();?>
+                              
+                           </div>
+                           <div class="card-body">
+                              <?php $viewtable->viewDeniedData();?>
+                              
+                           </div>
 
+                        </div>
+                     </div>
+                     
+                     <div class="col-12">
+                        <div class="card top-selling overflow-auto">
+                           <div class="filter">
+                              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                 <li class="dropdown-header text-start">
+                                    <h6>Filter</h6>
+                                 </li>
+                                 <li><a class="dropdown-item" href="#">Today</a></li>
+                                 <li><a class="dropdown-item" href="#">This Month</a></li>
+                                 <li><a class="dropdown-item" href="#">This Year</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+                  </div>
+               </div>
+            </div>
+         </section>
+    </main>
         <div class="container mt-4 puff-in-center">
-          <?php $viewtable->viewPendingData();?>
+          
         </div>
         <br>
         <div class="container mt-4 puff-in-center">
-          <?php $viewtable->viewOnHoldData();?>
+          
         </div>
         <br>
         <div class="container mt-4 puff-in-center">
-          <?php $viewtable->viewApprovedData();?>
+          
         </div>  
         <br>
         <div class="container mt-4 puff-in-center">
-          <?php $viewtable->viewDeniedData();?>
+          
         </div>  
         <br>
 
  <!-- Footer-->
- <footer class="bg-dark py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Centro Escolar University     ||     Mariano | Gita | Tuazon | Valencia</div></div>
-                    <div class="col-auto">
-                        <a class="link-light small" href="#!">Privacy</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Terms</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Contact</a>
-                    </div>
-                </div>
-            </div>
+ <footer id="footer" class="footer fixed">
+         <div class="copyright"> &copy; Copyright <strong><span>Compnay Name</span></strong>. All Rights Reserved</div>
+         <div class="credits"> with love <a href="https://freeetemplates.com/">FreeeTemplates</a></div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="resource/js/scripts.js"></script>
-        <script src="vendor/js/popper.js"></script>
         <script src="vendor/js/bootstrap.min.js"></script>
+        <script src="vendor/js/apexcharts.min.js"></script>
+         <script src="vendor/js/bootstrap.bundle.min.js"></script>
+         <script src="vendor/js/chart.min.js"></script>
+         <script src="vendor/js/echarts.min.js"></script>
+         <script src="vendor/js/quill.min.js"></script>
+         <script src="vendor/js/simple-datatables.js"></script>
+         <script src="vendor/js/tinymce.min.js"></script>
+         <script src="vendor/js/validate.js"></script>
+         <script src="vendor/js/main.js"></script> 
+         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+         <script>
+         AOS.init();
+         </script>
         
 </body>
 </html>

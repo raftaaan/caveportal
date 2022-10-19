@@ -75,9 +75,6 @@ function vald(){
             ),
             'email'=>array(
                 'required'=>'true'
-            ),
-            'College'=>array(
-                'required'=>'true'
             )));
 
             if($validate->passed()){
@@ -90,7 +87,7 @@ function vald(){
                         'salt'=>$salt,
                         'name'=> input::get('fullName'),
                         'joined'=>date('Y-m-d H:i:s'),
-                        'groups'=>1,
+                        'groups'=>2,
                         'colleges'=> input::get('College'),
                         'email'=> input::get('email'),
                     ));
@@ -112,6 +109,7 @@ function vald(){
                 }
 
                 Success();
+                
             }else{
                 foreach ($validate->errors()as $error) {
                 pError($error);
