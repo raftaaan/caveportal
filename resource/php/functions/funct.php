@@ -12,7 +12,7 @@ function CheckSuccess($status){
 
 function Success(){
     echo '<div class="alert alert-success alert-dismissible fade show col-12" role="alert">
-            <b>Congratulations!</b> You have successfully registered a new Student Records Assistant!
+            <b>Congratulations!</b> You have successfully registered Your Account!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -45,10 +45,10 @@ function pError($error){
     }
 
 function vald(){
-     if(input::exists()){
+     if(Input::exists()){
       if(Token::check(Input::get('Token'))){
          if(!empty($_POST['College'])){
-             $_POST['College'] = implode(',',input::get('College'));
+             $_POST['College'] = implode(',',Input::get('College'));
          }else{
             $_POST['College'] ="";
          }
@@ -82,26 +82,26 @@ function vald(){
                 $salt = Hash::salt(32);
                 try {
                     $user->create(array(
-                        'username'=>input::get('username'),
-                        'password'=>Hash::make(input::get('password'),$salt),
+                        'username'=>Input::get('username'),
+                        'password'=>Hash::make(Input::get('password'),$salt),
                         'salt'=>$salt,
-                        'name'=> input::get('fullName'),
+                        'name'=> Input::get('fullName'),
                         'joined'=>date('Y-m-d H:i:s'),
                         'groups'=>2,
-                        'colleges'=> input::get('College'),
-                        'email'=> input::get('email'),
+                        'colleges'=> Input::get('College'),
+                        'email'=> Input::get('email'),
                     ));
 
                     $user->createC(array(
-                        'checker'=> input::get('fullName'),
+                        'checker'=> Input::get('fullName'),
 
                     ));
                     $user->createV(array(
-                        'verifier'=> input::get('fullName'),
+                        'verifier'=> Input::get('fullName'),
                     ));
 
                     $user->createR(array(
-                        'releasedby'=> input::get('fullName'),
+                        'releasedby'=> Input::get('fullName'),
 
                     ));
                 } catch (Exception $e) {
@@ -125,7 +125,7 @@ function vald(){
 // hanggang dito ang tatanggalin
 
         function logd(){
-            if(input::exists()){
+            if(Input::exists()){
                 if(Token::check(Input::get('token'))){
                     $validate = new Validate();
                     $validation = $validate->check($_POST,array(
@@ -135,7 +135,7 @@ function vald(){
                     if($validation->passed()){
                         $user = new user();
                         $remember = (Input::get('remember') ==='on') ? true :false;
-                        $login = $user->login(Input::get('username'),input::get('password'),$remember);
+                        $login = $user->login(Input::get('username'),Input::get('password'),$remember);
                         if($login){
                             if($user->data()->groups == 1){
                                  Redirect::to('admindash.php');
@@ -174,9 +174,9 @@ function profilePic(){
 }
 
 function updateProfile(){
-    if(input::exists()){
+    if(Input::exists()){
         if(!empty($_POST['College'])){
-            $_POST['College'] = implode(',',input::get('College'));
+            $_POST['College'] = implode(',',Input::get('College'));
         }else{
            $_POST['College'] ="";
         }
@@ -198,9 +198,6 @@ function updateProfile(){
                 'required'=>'true',
                 'min'=>5,
                 'max'=>50,
-            ),
-            'College'=>array(
-                'required'=>'true'
             )));
 
             if($validate->passed()){
@@ -208,15 +205,15 @@ function updateProfile(){
 
                 try {
                     $user->update(array(
-                        'username'=>input::get('username'),
-                        'name'=> input::get('fullName'),
-                        'colleges'=> input::get('College'),
-                        'email'=> input::get('email')
+                        'username'=>Input::get('username'),
+                        'name'=> Input::get('fullName'),
+                        'email'=> Input::get('email')
                     ));
                 } catch (Exception $e) {
                     die($e->getMessage());
                 }
-                Redirect::to('template.php');
+                Redirect::to('clientdash.php');
+                
             }else{
                 foreach ($validate->errors()as $error) {
                 pError($error);
@@ -227,7 +224,7 @@ function updateProfile(){
 }
 
 function changeP(){
-    if(input::exists()){
+    if(Input::exists()){
         $validate = new Validate;
         $validate = $validate->check($_POST,array(
             'password_current'=>array(
@@ -244,20 +241,20 @@ function changeP(){
 
             if($validate->passed()){
                 $user = new user();
-                if(Hash::make(input::get('password_current'),$user->data()->salt) !== $user->data()->password){
+                if(Hash::make(Input::get('password_current'),$user->data()->salt) !== $user->data()->password){
                     curpassError();
                 }else{
                     $user = new user();
                     $salt = Hash::salt(32);
                     try {
                         $user->update(array(
-                            'password'=>Hash::make(input::get('password'),$salt),
+                            'password'=>Hash::make(Input::get('password'),$salt),
                             'salt'=>$salt
                         ));
                     } catch (Exception $e) {
                         die($e->getMessage());
                     }
-                    Redirect::to('template.php');
+                    Redirect::to('login.php');
                 }
             }else{
                 foreach ($validate->errors()as $error) {
@@ -294,35 +291,23 @@ function deleteT(){
 }
 
 function approvedClient(){
-    if(!empty($_GET['approvedstatus'])){
-        $edit = new edit($_GET['approvedstatus']);
-        if($edit->editApproved()){
-      
-    }
-    else {
- 
-    }
-    }
-}
-function onholdClient(){
-    if(!empty($_GET['onholdstatus'])){
-        $edit = new edit($_GET['onholdstatus']);
-        if($edit->editOnhold()){
- 
-    }
-    else {
-
-    }
-
+    if(!empty($_GET['approved']) && !empty($_POST['remarks'])){
+        $approved = new approved($_GET['approved'],$_POST['remarks']);
+        if($approved->ApprovedRemarks()){
+            header('location:admindash.php');
+        }else{
+            echo "Error in Approving";
+     }
     }
 }
 function deniedClient(){
-    if(!empty($_GET['deniedstatus'])){
-        $edit = new edit($_GET['deniedstatus']);
-        if($edit->editDenied()){
-    }
-    else {
-    }
+    if(!empty($_GET['denied']) && !empty($_POST['remarks'])){
+        $denied = new denied($_GET['denied'],$_POST['remarks']);
+        if($denied->DeniedRemarks()){
+            header('location:admindash.php');
+        }else{
+            echo "Error in Denying";
+        }
     }
 }
 
@@ -333,6 +318,17 @@ function deleteClient(){
     }
     else {
     }
+    }
+}
+
+function holdRemarks(){
+    if(!empty($_GET['hold']) && !empty($_POST['remarks'])){
+        $hold = new hold($_GET['hold'],$_POST['remarks']);
+        if($hold->OnholdRemarks()){
+            header('location:admindash.php');
+        }else{
+            echo "Error in holding";
+        }
     }
 }
  ?>
