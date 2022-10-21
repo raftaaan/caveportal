@@ -43,18 +43,11 @@ class view extends config{
         public function countries(){
           $config = new config;
           $con = $config->con();
-
-          $sql = "SELECT * FROM `countries`";
-
           $sql = "SELECT * FROM `tbl_countries`";
-
           $data = $con->prepare($sql);
-          $data ->execute();
+          $data->execute();
           $rows =$data->fetchAll(PDO::FETCH_OBJ);
               foreach ($rows as $row) {
-
-                echo '<option data-tokens=".'.$row->country_name.'." value="'.$row->country_name.'">'.$row->country_name.'</option>';
-
                 echo '<option data-tokens=".'.$row->countryname.'." value="'.$row->countryname.'">'.$row->countryname.'</option>';
 
               }
@@ -65,4 +58,6 @@ class view extends config{
           for ($i = 1950; $i <= 2022; $i++) 
          echo '<option data-tokens=".'.$i.'." value="'.$i.'">'.$i.'</option>';
         }
+
+
 }

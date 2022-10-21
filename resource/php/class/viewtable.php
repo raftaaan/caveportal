@@ -80,7 +80,7 @@ public function viewData_clients(){
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='mb-4 mt-5'>Completed Tasks</h3>";
+  echo "<h3 class='mb-4 mt-5'></h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='candtable' class='table table-borderless  table-hover shadow' width='100%'>";
   echo "<thead>";
@@ -100,8 +100,8 @@ public function viewData_clients(){
     echo "<td>$data[lastName]</td>";
     echo "<td>$data[degree]</td>";
     echo "<td>$data[status]</td>";
-    echo "<td><a class='btn btn-sm icons'href='#'><i class='bi bi-person-lines-fill'></i></a>
-    <a class='btn btn-sm icons'href='#'><i class='bi bi-download'></i>
+    echo "<td><a class='btn btn-sm icons'href=''><i class='bi bi-person-lines-fill icons'></i></a>
+    <a class='btn btn-sm icons'href=''download><i class='bi bi-download icons'></i>
    </a></td>";
     echo "</tr>";
   }
@@ -148,14 +148,14 @@ public function viewApprovedData(){
       echo "<td>$data[lastName]</td>";
       echo "<td>$data[degree]</td>";
       echo "<td>$data[date_added]</td>";
-      echo "<td><a href='$data[consentForm]' target='_blank'>View</a><br><a href='$data[consentForm]' download>Download</a></td>";
-      echo "<td><a href='$data[diploma]' target='_blank'>View</a><br><a href='$data[diploma]' download>Download</a></td>";
+      echo "<td><a href='$data[consentForm]' target='_blank'><i class='bi bi-eye-fill icons'></i></a><a href='$data[consentForm]' download><i class='bi bi-arrow-down-circle-fill icons'></i></a></td>";
+      echo "<td><a href='$data[diploma]' target='_blank'><i class='bi bi-eye-fill icons'></i></a><a href='$data[diploma]' download><i class='bi bi-arrow-down-circle-fill icons'></i></a></td>";
       echo "<td>$data[date_completed]</td>";
       echo "<td>$data[status]</td>";
-      echo "<td>      </td>";
+      echo "<td>$data[remarks]</td>";
       echo "<td>
-      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-file-earmark-x-fill'></i></a>
-      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill'></i></a>
+      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-x-circle-fill icons'></i></a>
+      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill icons'></i></a>
 
       </td>";
       echo "</tr>";
@@ -197,14 +197,14 @@ public function viewOnHoldData(){
       echo "<td>$data[lastName]</td>";
       echo "<td>$data[degree]</td>";
       echo "<td>$data[date_added]</td>";
-      echo "<td><a href='$data[consentForm]' target='_blank'>View</a><br><a href='$data[consentForm]' download>Download</a></td>";
-      echo "<td><a href='$data[diploma]' target='_blank'>View</a><br><a href='$data[diploma]' download>Download</a></td>";
+      echo "<td><a href='$data[consentForm]' target='_blank'><i class='bi bi-eye-fill icons'></i></a><a href='$data[consentForm]' download><i class='bi bi-arrow-down-circle-fill icons'></i></a></td>";
+      echo "<td><a href='$data[diploma]' target='_blank'><i class='bi bi-eye-fill icons'></i></a><a href='$data[diploma]' download><i class='bi bi-arrow-down-circle-fill icons'></i></a></td>";
       echo "<td>$data[status]</td>";
-      echo "<td>      </td>";
+      echo "<td>$data[remarks]</td>";
       echo "<td>
-      <a class='btn btn-sm' href='adminfunctions.php?approvedstatus=$data[id]'><i class='bi bi-check-square-fill'></i></a><br>
-      <a class='btn btn-sm'href='adminfunctions.php?deniedstatus=$data[id]'><i class='bi bi-file-earmark-x-fill'></i></a><br>
-      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill'></i></a>
+      <a class='btn btn-sm' href='adminfunctions.php?approved=$data[id]'><i class='bi bi-check-circle-fill icons'></i></a>
+      <a class='btn btn-sm'href='adminfunctions.php?denied=$data[id]'><i class='bi bi-x-circle-fill icons'></i></a>
+      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill icons'></i></a>
 
       </td>";
       echo "</tr>";
@@ -244,15 +244,15 @@ public function viewPendingData(){
       echo "<td>$data[lastName]</td>";
       echo "<td>$data[degree]</td>";
       echo "<td>$data[date_added]</td>";
-      echo "<td><a href='$data[consentForm]' target='_blank'>View</a><br><a href='$data[consentForm]' download>Download</a></td>";
-      echo "<td><a href='$data[diploma]' target='_blank'>View</a><br><a href='$data[diploma]' download>Download</a></td>";
+      echo "<td><a href='$data[consentForm]' target='_blank'><i class='bi bi-eye-fill icons'></i></a><a href='$data[consentForm]' download><i class='bi bi-arrow-down-circle-fill icons'></i></a></td>";
+      echo "<td><a href='$data[diploma]' target='_blank'><i class='bi bi-eye-fill icons'></i></a><a href='$data[diploma]' download><i class='bi bi-arrow-down-circle-fill icons'></i></a></td>";
       echo "<td>$data[status]</td>";
-      echo "<td>      </td>";
+      echo "<td>$data[remarks]</td>";
       echo "<td>   
-      <a class='btn btn-sm' href='adminfunctions.php?approvedstatus=$data[id]'><i class='bi bi-check-square-fill'></i></a><br>
-      <a class='btn btn-sm'href='adminfunctions.php?onholdstatus=$data[id]'><i class='bi bi-hourglass-split'></i></a><br>
-      <a class='btn btn-sm'href='adminfunctions.php?deniedstatus=$data[id]'><i class='bi bi-file-earmark-x-fill'></i></a><br>
-      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill'></i></a>
+      <a class='btn btn-sm' href='remarks.php?approved=$data[id]'><i class='bi bi-check-circle-fill icons'></i></a>
+      <a class='btn btn-sm'href='remarks.php?hold=$data[id]'><i class='bi bi-clock-fill'></i></a>
+      <a class='btn btn-sm'href='remarks.php?denied=$data[id]'><i class='bi bi-x-circle-fill icons'></i></a>
+      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill icons'></i></a>
 
       </td>";
       echo "</tr>";
@@ -267,8 +267,6 @@ public function viewDeniedData(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='mb-4 mt-5'>DENIED APPLICATIONS</h3>";
   echo "<div class='table-responsive'>";
-
-  echo "<table id='deniedtable' class='table table-borderless  table-hover shadow' width='100%'>";
   echo "<table id='deniedtable' class='table table-borderless table-hover shadow' width='100%'>";
 
   echo "<thead>
@@ -296,15 +294,15 @@ public function viewDeniedData(){
       echo "<td>$data[lastName]</td>";
       echo "<td>$data[degree]</td>";
       echo "<td>$data[date_added]</td>";
-      echo "<td><a href='$data[consentForm]' target='_blank'>View</a><br><a href='$data[consentForm]' download>Download</a></td>";
-      echo "<td><a href='$data[diploma]' target='_blank'>View</a><br><a href='$data[diploma]' download>Download</a></td>";
+      echo "<td><a href='$data[consentForm]' target='_blank'><i class='bi bi-eye-fill icons'></i></a><a href='$data[consentForm]' download><i class='bi bi-arrow-down-circle-fill icons'></i></a></td>";
+      echo "<td><a href='$data[diploma]' target='_blank'><i class='bi bi-eye-fill icons'></i></a><a href='$data[diploma]' download><i class='bi bi-arrow-down-circle-fill icons'></i></a></td>";
       echo "<td>$data[date_completed]</td>";
       echo "<td>$data[status]</td>";
-      echo "<td>      </td>";
+      echo "<td>$data[remarks]</td>";
 
 
       echo "<td>
-      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill'></i></a>
+      <a class=' btn btn-sm' href='adminfunctions.php?delete=$data[id]'><i class='bi bi-trash-fill icons'></i></a>
 
       </td>";
       echo "</tr>";
