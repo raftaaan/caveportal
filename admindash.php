@@ -4,10 +4,7 @@ isLogin();
 $user = new user();
 isAdmin($user->data()->groups);
 $viewtable = new viewtable();
-$accounts = new accounts();
 
-
-// $approvedstatus = new approvedstatus();
 ?>
 
 

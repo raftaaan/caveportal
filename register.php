@@ -54,7 +54,7 @@ $view = new view;
                             <div class="col-md-12">
                                 <h1 class="title-wrapper">Sign Up</h1>
                                 <div class="fw-normal text-muted mb-4"> Have an Account?
-                                    <a href="register.php #inq" class="text-header fw-bold text-decoration-none">Sign In</a>
+                                    <a href="login.php" class="text-header fw-bold text-decoration-none">Sign In</a>
                                     </div>
                                 </div>
                             </div>
@@ -63,27 +63,27 @@ $view = new view;
                             ?>
                                 <div class="row justify-content-center mt-4 mb-4">
                                     <div class="form-floating col-md-6">
-                                        <input class="form-control form-control-md"  type="text" name="username" id="floatingInput" value ="<?php echo input::get('username');?>" autocomplete="off" placeholder="Username" required />
+                                        <input class="form-control form-control-md"  type="text" name="username" id="floatingInput" value ="<?php echo Input::get('username');?>" autocomplete="off" placeholder="Username" required />
                                         <label for ="floatingInput" class=""> Username</label>
                                     </div>
                                     <div class="form-floating col-md-6">
-                                        <input class="form-control form-control-md"  type = "text" name="fullName" id="floatingInput" value ="<?php echo input::get('fullName');?>" placeholder="Full Name" required>
+                                        <input class="form-control form-control-md"  type = "text" name="fullName" id="floatingInput" value ="<?php echo Input::get('fullName');?>" placeholder="Full Name" required>
                                         <label for = "floatingInput" class=""> Full Name</label>
                                     </div>
                                 </div>
                                 <div class="row justify-content-center mb-4">
                                     <div class="form-floating col-md-12">
-                                        <input class="form-control"  type = "text" name="email" id="floatingInput" value ="<?php echo input::get('email');?>"placeholder="Email Address" required>
+                                        <input class="form-control"  type = "text" name="email" id="floatingInput" value ="<?php echo Input::get('email');?>"placeholder="Email Address" required>
                                         <label for = "floatingInput" class=""> Email Address</label>
                                     </div>
                                 </div>
                                 <div class="row justify-content-center">       
                                     <div class="form-floating col-md-6">            
-                                        <input type="password" class="form-control" name="password" id="floatingInput" value ="<?php echo input::get('password');?>" autocomplete="off" placeholder="Password" required/>                 
+                                        <input type="password" class="form-control" name="password" id="floatingInput" value ="<?php echo Input::get('password');?>" autocomplete="off" placeholder="Password" required/>                 
                                         <label for = "floatingInput"> Password</label>
                                     </div>            
                                     <div class="form-floating col-md-6">       
-                                        <input type="password" class="form-control" name="ConfirmPassword" id="floatingInput" value ="<?php echo input::get('ConfirmPassword');?>" autocomplete="off" placeholder="Confirm Password" required/>
+                                        <input type="password" class="form-control" name="ConfirmPassword" id="floatingInput" value ="<?php echo Input::get('ConfirmPassword');?>" autocomplete="off" placeholder="Confirm Password" required/>
                                         <label for = "floatingInput"> Confirm Password</label>  
                                     </div>
                                 </div>            

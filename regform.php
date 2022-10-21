@@ -55,7 +55,7 @@ $user = new user();
         <div class="container mt-2 slide-in-left rounded shadow-sm" data-aos="fade-down"  data-aos-duration="1500">
           <?php 
             if(!empty($_POST)){
-              $insert = new insert($_POST['firstName'],$_POST['middleName'],$_POST['lastName'],$_POST['degree'], $_POST['yearsGrad'],$_FILES['diploma'], $_FILES['consent']);
+              $insert = new insert($_POST['firstName'],$_POST['middleName'],$_POST['lastName'],$_POST['degree'], $_POST['yearsGrad'], $_POST['country'],$_FILES['diploma'], $_FILES['consent']);
               }
               ?>
             <form action="" method="POST" class="rounded bg-white shadow py-4 px-4" enctype="multipart/form-data">
@@ -90,22 +90,19 @@ $user = new user();
                 <div class="form-group col-md-4">
                   <label for="degree">Course/s</label>
                   <select id="degree" name="degree" class="selectpicker form-select" data-live-search="true" required>
-                    <option selected disabled>---- Select Course ----</option>
-                    <option value="<?php $view->courses();?>"></option>
+                  <?php $view->courses();?>
                   </select>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="yearsGrad" >Year Graduated</label>
                   <select name="yearsGrad" id="yearsGrad" class="selectpicker form-select" data-live-search="true" required>
-                  <option selected disabled>---- Select Year ----</option>
-                    <option value="<?php $view->years();?>"></option>
-                  </select>
+                  <?php $view->years();?>
+                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="yearsGrad" >Country</label>
-                  <select name="yearsGrad" id="yearsGrad" class="selectpicker form-select" data-live-search="true" required>
-                  <option selected disabled>---- Select Country ----</option>
-                    <option value="<?php $view->countries();?>"></option>
+                  <label for="country" >Country</label>
+                  <select name="country" id="yearsGrad" class="selectpicker form-select" data-live-search="true" required>
+                  <?php $view->countries();?>
                   </select>
                 </div>
               </div>

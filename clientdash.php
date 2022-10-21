@@ -22,6 +22,7 @@ $agentID = $user->data()->id;
         <link href="vendor/css/all.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="vendor/img/favicon.png" rel="icon">
+        <link href="resource/img/tab-icon.png" rel="icon">
         <link href="vendor/img/apple-touch-icon.png" rel="apple-touch-icon">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
         <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +53,7 @@ $agentID = $user->data()->id;
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item"> <a class="nav-link " href="clientdash.php"> <i class="bi bi-grid"></i><span>Dashboard</span></a></li>
             <li class="nav-heading">Pages</li>
-            <li class="nav-item"> <a class="nav-link collapsed" href="clientprofile.html"> <i class="bi bi-person"></i> <span>Profile</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="clientprofile.php"> <i class="bi bi-person"></i> <span>Profile</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="logout.php"> <i class="bi bi-box-arrow-in-right"></i> <span>Log out</span> </a></li>
         </ul>
     </aside>
