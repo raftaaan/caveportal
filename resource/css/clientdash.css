@@ -432,6 +432,7 @@ legend {
     font-size: 1.5rem;
   }
 }
+<<<<<<< Updated upstream
 legend + * {
   clear: left;
 }
@@ -11466,3 +11467,88 @@ body {
     .form-wrap .help-text p {
       text-align: center;
       font-size: 14px; }
+=======
+.reqbtn:hover {
+  background-color: #f04e98;
+  color: #f5f5f5;
+  transition: 0.3s ease;
+}
+
+.btn-sm {
+  background: #251f70;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #714da6;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  margin-bottom: 10px;
+ }
+ 
+.btn-sm .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+  right: 0.3em;
+  font-weight: bold;
+  transition: all 0.3s;
+ }
+ 
+.btn-sm:hover .icon {
+  width: calc(100% - 0.6em);
+ }
+
+.btn-sm .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #251f70;
+  font-weight: bold !important;
+ }
+
+ .btn-sm:hover .icon svg {
+  transform: translateX(0.1em);
+ }
+
+.btn-sm:active .icon {
+  transform: scale(0.95);
+ }
+ 
+thead th {
+  background-color: #251f70 !important; 
+  color: #f5f5f5;
+}
+.dataTables_filter {
+  margin-bottom: 10px;
+}
+.dataTables_filter label{
+  font-weight: bold;
+}
+.dataTables_info {
+  font-weight: bold;
+}
+
+.table-titles {
+  font-weight: 600;
+}
+
+.main{
+  min-height: calc(100vh - 95px);
+}
+>>>>>>> Stashed changes

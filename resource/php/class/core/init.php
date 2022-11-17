@@ -3,10 +3,17 @@ date_default_timezone_set('Asia/Manila');
 session_start();
 $GLOBALS['config'] = array(
     'mysql'=>array(
+        //local connection
         'host' => '127.0.0.1:3306',
         'username' =>'root',
         'password' =>'',
         'db'=>'cave'
+
+        // hostinger connection
+        // 'host' => '109.106.251.63',
+        // 'username' =>'port7396_cave',
+        // 'password' =>'p@ssw0rdBSIT4A',
+        // 'db'=>'port7396_caveportal'
     ),
     'remember'=>array(
         'cookie_name' => 'hash',

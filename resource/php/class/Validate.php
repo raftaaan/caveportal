@@ -29,13 +29,34 @@ class Validate{
                             break;
                             case 'matches':
                                 if($value != $source[$rule_value]){
-                                    $this->addError(strtoupper($rule_value)."must match".strtoupper($item));
+                                    $this->addError(strtoupper($rule_value)." must match ".strtoupper($item));
                                 }
                             break;
                             case 'unique':
                                 $check = $this->_db->get($rule_value, array($item,'=',$value));
                                 if($check->count()){
                                     $this->addError(strtoupper($item)." already exists");
+                                }
+                            break;
+                            case 'type':
+                                if(!filter_var($value, FILTER_VALIDATE_EMAIL)){
+                                    $this->addError(strtoupper($item). " must be in a valid format! ");
+                                } else if (!preg_match(
+                                    "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $value)) {
+                                    $this->addError(strtoupper($item). " must first contain letter ");
+                                }
+                            break;
+                            case 'type1': 
+                                if(!ctype_alnum(str_replace(' ', '', $value))) {
+                                    $this->addError(strtoupper($item). " is Not Applicable! ");
+                                }else if (preg_match(
+                                    "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $value)) {
+                                    $this->addError(strtoupper($item). " must first contain letter ");
+                                }
+                            break;
+                            case 'type2':
+                                if(!ctype_alpha(str_replace(' ', '', $value))) {
+                                    $this->addError(strtoupper($item). " is Not Applicable! ");
                                 }
                             break;
                         }

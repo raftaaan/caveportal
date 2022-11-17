@@ -31,6 +31,26 @@ body{
     background-size:contain;
     min-height: 100%;
 }
+.close {
+  background: transparent;
+  float: right;
+  border: none;
+  font-weight: bold;
+  font-family: "Montserrat";
+  font-size: 20px;
+  color:#3C4048;
+}
+.close:hover {
+  background: transparent;
+  float: right;
+  border: none;
+  font-weight: bold;
+  font-family: "Montserrat";
+  font-size: 20px;
+  color:#000000;
+  transition: 0.5s ease;
+}
+
 .wrapper .logo img{
     max-width:40%;
 }
@@ -208,7 +228,9 @@ h2, .h2 {
   background-color: rgba(37, 31, 112, 10) ;
   
 }
-
+.title {
+  color: #251f70 ;
+}
 
 h3, .h3 {
   font-size: calc(1.3rem + 0.6vw);

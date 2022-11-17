@@ -12,7 +12,7 @@ function CheckSuccess($status){
 
 function Success(){
     echo '<div class="alert alert-success alert-dismissible fade show col-12" role="alert">
-            <b>Congratulations!</b> You have successfully registered a new Student Records Assistant!
+            <b>Congratulations!</b> You have successfully registered Your Account!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -20,7 +20,7 @@ function Success(){
     }
 function loginError(){
         echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
-                <b>Error!</b> Invalid username/Password
+                <b>Error!</b> Invalid Username or Password
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -29,13 +29,10 @@ function loginError(){
 function curpassError(){
         echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
                 <b>Error!</b> Invalid Current Password
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
             </div>';
         }
 
-function pError($error){
+ function pError($error){
     echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
             <b>Error!</b> '.$error.'
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -44,11 +41,17 @@ function pError($error){
         </div>';
     }
 
+function rError($error){
+    echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+        <b>Error!</b> '.$error.'
+            </div>';
+        }
+
 function vald(){
-     if(input::exists()){
+     if(Input::exists()){
       if(Token::check(Input::get('Token'))){
          if(!empty($_POST['College'])){
-             $_POST['College'] = implode(',',input::get('College'));
+             $_POST['College'] = implode(',',Input::get('College'));
          }else{
             $_POST['College'] ="";
          }
@@ -58,6 +61,7 @@ function vald(){
                 'required'=>'true',
                 'min'=>4,
                 'max'=>20,
+                'type1'=>'text',
                 'unique'=>'tbl_accounts'
             ),      
             'password'=>array(
@@ -66,18 +70,30 @@ function vald(){
             ),
             'ConfirmPassword'=>array(
                 'required'=>'true',
-                'matches'=>'password'
+                'matches'=>'password',
             ),
             'fullName'=>array(
                 'required'=>'true',
                 'min'=>2,
                 'max'=>50,
+                'type2'=>'text'
             ),
             'email'=>array(
+<<<<<<< Updated upstream
                 'required'=>'true'
             ),
             'College'=>array(
                 'required'=>'true'
+=======
+                'required'=>'true',
+                'type'=>'email'
+                
+            ),
+            'company'=>array(
+                'required'=>'true',
+                'min'=>2,
+                'type2'=>'text'
+>>>>>>> Stashed changes
             )));
 
             if($validate->passed()){
@@ -85,26 +101,32 @@ function vald(){
                 $salt = Hash::salt(32);
                 try {
                     $user->create(array(
-                        'username'=>input::get('username'),
-                        'password'=>Hash::make(input::get('password'),$salt),
+                        'username'=>Input::get('username'),
+                        'password'=>Hash::make(Input::get('password'),$salt),
                         'salt'=>$salt,
-                        'name'=> input::get('fullName'),
+                        'name'=> Input::get('fullName'),
                         'joined'=>date('Y-m-d H:i:s'),
+<<<<<<< Updated upstream
                         'groups'=>1,
                         'colleges'=> input::get('College'),
                         'email'=> input::get('email'),
+=======
+                        'groups'=>2,
+                        'email'=> Input::get('email'),
+                        'company'=> Input::get('company'),
+>>>>>>> Stashed changes
                     ));
 
                     $user->createC(array(
-                        'checker'=> input::get('fullName'),
+                        'checker'=> Input::get('fullName'),
 
                     ));
                     $user->createV(array(
-                        'verifier'=> input::get('fullName'),
+                        'verifier'=> Input::get('fullName'),
                     ));
 
                     $user->createR(array(
-                        'releasedby'=> input::get('fullName'),
+                        'releasedby'=> Input::get('fullName'),
 
                     ));
                 } catch (Exception $e) {
@@ -112,8 +134,14 @@ function vald(){
                 }
 
                 Success();
+<<<<<<< Updated upstream
+=======
+                header("refresh:2; login.php"); 
+
+>>>>>>> Stashed changes
             }else{
                 foreach ($validate->errors()as $error) {
+                    header('location: clientprofile.php#profile-edit');
                 pError($error);
                 }
             }
@@ -121,23 +149,29 @@ function vald(){
             }else{
                 return false;
             }
+            
+
         }
 // pag di gumana idelete
         
 // hanggang dito ang tatanggalin
 
         function logd(){
-            if(input::exists()){
+            if(Input::exists()){
                 if(Token::check(Input::get('token'))){
                     $validate = new Validate();
                     $validation = $validate->check($_POST,array(
-                        'username' => array('required'=>true),
-                        'password'=> array('required'=>true)
-                    ));
+                        'username' => array(
+                            'required'=>'true',
+                            'type2'=>'text'
+                    ),
+                        'password'=> array(
+                            'required'=>'true'
+                        )));
                     if($validation->passed()){
                         $user = new user();
                         $remember = (Input::get('remember') ==='on') ? true :false;
-                        $login = $user->login(Input::get('username'),input::get('password'),$remember);
+                        $login = $user->login(Input::get('username'),Input::get('password'),$remember);
                         if($login){
                             if($user->data()->groups == 1){
                                  Redirect::to('admindash.php');
@@ -176,33 +210,34 @@ function profilePic(){
 }
 
 function updateProfile(){
-    if(input::exists()){
+    if(Input::exists()){
         if(!empty($_POST['College'])){
-            $_POST['College'] = implode(',',input::get('College'));
+            $_POST['College'] = implode(',',Input::get('College'));
         }else{
            $_POST['College'] ="";
         }
 
         $validate = new Validate;
-        $validate = $validate->check($_POST,array(
+        $validation = $validate->check($_POST,array(
             'username'=>array(
-                'required'=>'true',
                 'min'=>4,
                 'max'=>20,
-                'unique'=>'tbl_accounts'
+                'type1'=>'text',
+                
             ),
             'fullName'=>array(
-                'required'=>'true',
                 'min'=>2,
                 'max'=>50,
+                'type2'=>'text'
             ),
             'email'=>array(
-                'required'=>'true',
                 'min'=>5,
                 'max'=>50,
+                'type'=>'email'
             ),
-            'College'=>array(
-                'required'=>'true'
+            'company'=>array(
+                'min'=>2,
+                'type2'=>'text'
             )));
 
             if($validate->passed()){
@@ -210,28 +245,41 @@ function updateProfile(){
 
                 try {
                     $user->update(array(
-                        'username'=>input::get('username'),
-                        'name'=> input::get('fullName'),
-                        'colleges'=> input::get('College'),
-                        'email'=> input::get('email')
+                        'username'=>Input::get('username'),
+                        'name'=> Input::get('fullName'),
+                        'email'=> Input::get('email'),
+                        'company'=> Input::get('company')
                     ));
+                    echo "<script type='text/javascript'>
+                    swal.fire({ 
+                        icon: 'success',
+                        title: 'Profile has been updated',
+                        showConfirmButton: false,
+                        timerProgressBar: true,
+                        timer: 2000
+                    }).then(okay => {
+                          if (okay) {
+                           window.location.href = 'clientprofile.php';
+                         }
+                       });
+                    </script>";
                 } catch (Exception $e) {
                     die($e->getMessage());
                 }
-                Redirect::to('template.php');
             }else{
-                foreach ($validate->errors()as $error) {
-                pError($error);
+                foreach ($validation->errors()as $error) {
+                rError($error);
                 }
+                
         }
 
     }
 }
 
 function changeP(){
-    if(input::exists()){
+    if(Input::exists()){
         $validate = new Validate;
-        $validate = $validate->check($_POST,array(
+        $validation = $validate->check($_POST,array(
             'password_current'=>array(
                 'required'=>'true',
             ),
@@ -246,25 +294,40 @@ function changeP(){
 
             if($validate->passed()){
                 $user = new user();
-                if(Hash::make(input::get('password_current'),$user->data()->salt) !== $user->data()->password){
+                if(Hash::make(Input::get('password_current'),$user->data()->salt) !== $user->data()->password){
                     curpassError();
                 }else{
                     $user = new user();
                     $salt = Hash::salt(32);
                     try {
                         $user->update(array(
-                            'password'=>Hash::make(input::get('password'),$salt),
+                            'password'=>Hash::make(Input::get('password'),$salt),
                             'salt'=>$salt
                         ));
+                        echo "<script type='text/javascript'>
+                        swal.fire({ 
+                        icon: 'success',
+                        title: 'Current Password has been Updated, Please Login Again, Thank You!',
+                        showConfirmButton: false,
+                        timerProgressBar: true,
+                        timer: 2000
+                        
+                        }).then(okay => {
+                          if (okay) {
+                            
+                           window.location.href = 'logout.php';
+                         }
+                       });
+                        </script>";
                     } catch (Exception $e) {
                         die($e->getMessage());
                     }
-                    Redirect::to('template.php');
                 }
             }else{
-                foreach ($validate->errors()as $error) {
-                pError($error);
+                foreach ($validation->errors()as $error) {
+                rError($error);
                 }
+
         }
     }
 }
@@ -289,23 +352,43 @@ function deleteT(){
     if(!empty($_GET['delete'])){
         $delete = new delete($_GET['delete']);
         if($delete->deleteClient()){
-    }
-    else {
-    }
+            echo "<script type='text/javascript'>
+                    swal.fire({ 
+                        icon: 'success',
+                        title: 'Data has been Successfully Deleted',
+                        showConfirmButton: false,
+                        timerProgressBar: true,
+                        timer: 2000
+                    }).then(okay => {
+                          if (okay) {
+                           window.location.href = 'admindash.php';
+                         }
+                       });
+                    </script>";
+        }
     }
 }
 
 function approvedClient(){
-    if(!empty($_GET['approvedstatus'])){
-        $edit = new edit($_GET['approvedstatus']);
-        if($edit->editApproved()){
-      
-    }
-    else {
- 
-    }
+    if(!empty($_GET['approved'])){
+            $approved = new approved($_GET['approved']);
+            $approved->approvedRemarks();
+            echo "<script type='text/javascript'>
+                    swal.fire({ 
+                        icon: 'success',
+                        title: 'Data has been Successfully Denied',
+                        showConfirmButton: false,
+                        timerProgressBar: true,
+                        timer: 2000
+                    }).then(okay => {
+                          if (okay) {
+                           window.location.href = 'admindash.php';
+                         }
+                       });
+                    </script>";
     }
 }
+<<<<<<< Updated upstream
 function onholdClient(){
     if(!empty($_GET['onholdstatus'])){
         $edit = new edit($_GET['onholdstatus']);
@@ -315,13 +398,42 @@ function onholdClient(){
     }
     }
 }
+=======
+
+>>>>>>> Stashed changes
 function deniedClient(){
-    if(!empty($_GET['deniedstatus'])){
-        $edit = new edit($_GET['deniedstatus']);
-        if($edit->editDenied()){
-    }
-    else {
-    }
+    if(!empty($_GET['denied']) && !empty($_POST['remarks'])){
+        if (trim($_POST['remarks']) == '') {
+            $message = "Please put Remarks!";
+            echo "<script>alert('$message');</script>";
+        }else if(!ctype_alpha(str_replace(' ', '', $_POST['remarks']))){
+            echo "<script type='text/javascript'>
+            Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Entered Remarks is not Applicable',
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 2000
+            })
+            </script>";
+        }else {
+            $denied = new denied($_GET['denied'],$_POST['remarks']);
+            $denied->DeniedRemarks();
+            echo "<script type='text/javascript'>
+                    swal.fire({ 
+                        icon: 'success',
+                        title: 'Data has been Successfully Denied',
+                        showConfirmButton: false,
+                        timerProgressBar: true,
+                        timer: 2000
+                    }).then(okay => {
+                          if (okay) {
+                           window.location.href = 'admindash.php';
+                         }
+                       });
+                    </script>";
+        }
     }
 }
 
@@ -329,9 +441,56 @@ function deleteClient(){
     if(!empty($_GET['delete'])){
         $edit = new edit($_GET['delete']);
         if($edit->deleteClient()){
+            echo "<script type='text/javascript'>
+                    swal.fire({ 
+                        icon: 'success',
+                        title: 'Data has been Successfully Deleted',
+                        showConfirmButton: false,
+                        timerProgressBar: true,
+                        timer: 2000
+                    }).then(okay => {
+                          if (okay) {
+                           window.location.href = 'admindash.php';
+                         }
+                       });
+                    </script>";
+        }
     }
-    else {
-    }
+}
+
+function holdRemarks(){
+    if(!empty($_GET['hold']) && !empty($_POST['remarks'])){
+        if ($_POST['remarks'] == '') {
+            $message = "Please put Remarks!";
+            echo "<script>alert('$message');</script>";
+        }else if(!ctype_alpha(str_replace(' ', '', $_POST['remarks']))){
+            echo "<script type='text/javascript'>
+            Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Entered Remarks is not Applicable',
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 2000
+            })
+            </script>";
+        }else {
+            $hold = new hold($_GET['hold'],$_POST['remarks']);
+            $hold->OnholdRemarks();
+            echo "<script type='text/javascript'>
+                    swal.fire({ 
+                        icon: 'success',
+                        title: 'Data has been Successfully put On Hold',
+                        showConfirmButton: false,
+                        timerProgressBar: true,
+                        timer: 2000
+                    }).then(okay => {
+                          if (okay) {
+                           window.location.href = 'admindash.php';
+                         }
+                       });
+                    </script>";
+        }
     }
 }
  ?>

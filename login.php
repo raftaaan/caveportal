@@ -32,15 +32,25 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init
             </nav>
             
             <!-- Header-->
+<<<<<<< Updated upstream
     <header class="bg-dark py-lg-5">
         <div class="container">
+=======
+        <header class="bg-dark py-lg-5">
+            <div class="container pt-5">
+>>>>>>> Stashed changes
                 <section class="wrapper">
                     <div class="container">
                         <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
                             <form class="rounded bg-white shadow py-5 px-4" method="POST">
                                 <h3 class="text-dark fw-bolder fs-4 mb-2">Sign In</h3>
+<<<<<<< Updated upstream
                                 <div class="fw-normal text-muted mb-4"> New Here?
                                     <a href="index.php #inq" class="text-primary fw-bold text-decoration-none">Inquire for an Account</a>
+=======
+                                <div class="fw-normal text-muted mb-4"> 
+                                    <a href="register.php #inq" class="text-primary fw-bold text-decoration-none"></a>
+>>>>>>> Stashed changes
                                 </div>
                                 <?php logd();?>
                                 <div class="form-floating mb-3">
@@ -51,9 +61,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init
                                     <input type="password" class="form-control" id="floatingPassword" name="password" pass  placeholder="Password">
                                     <label for="floatingPassword">Password</label>
                                 </div>
-                                <div class="mt-2 text-end">
-                                    <a href="#" class="text-primary fw-bold text-decoration-none">Forgot Password?</a>
-                                </div>
+                                
                                 <input type =hidden name="token" value="<?php echo Token::generate(); ?>">
                                 <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Log In</button>
                             </form>
@@ -64,10 +72,14 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init
             
         </main>
         <!-- Footer-->
+<<<<<<< Updated upstream
         <div class="bg-dark py-4 mt-auto">
+=======
+        <footer class="bg-dark py-4 mt-auto">
+>>>>>>> Stashed changes
             <div class="container px-5">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Centro Escolar University</div></div>
+                    <div class="col-auto"><div class="small m-0 text-white">Centro Escolar University     ||     Mariano | Gita | Tuazon | Valencia</div></div>
                     <div class="col-auto">
                         <a class="link-light small" href="#!">Privacy</a>
                         <span class="text-white mx-1">&middot;</span>

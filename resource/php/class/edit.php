@@ -47,9 +47,11 @@ class edit extends config{
         $data = $con->prepare($sql);
         if($data->execute()){
             return true;
+            
         }else{
             return false;
         }
+        
 
     }
 }
